@@ -164,6 +164,54 @@
     });
   });
 
+  /* ---------- hero video: play / pause ---------- */
+  const video = $("#heroVideo");
+  const vToggle = $(".video-toggle");
+  const PAUSE_ICON = '<svg width="12" height="12" viewBox="0 0 12 12"><rect x="2" y="1" width="3" height="10" rx="1" fill="currentColor"/><rect x="7" y="1" width="3" height="10" rx="1" fill="currentColor"/></svg>';
+  const PLAY_ICON = '<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 1.5v9l7-4.5z" fill="currentColor"/></svg>';
+  if (video && vToggle) {
+    const sync = () => {
+      vToggle.innerHTML = video.paused ? PLAY_ICON : PAUSE_ICON;
+      vToggle.setAttribute("aria-label", video.paused ? "הפעלת הסרטון" : "השהיית הסרטון");
+    };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) video.pause();
+    video.addEventListener("play", sync);
+    video.addEventListener("pause", sync);
+    vToggle.addEventListener("click", () => (video.paused ? video.play() : video.pause()));
+    sync();
+  }
+
+  /* ---------- ambient light modes ---------- */
+  const design = $(".design");
+  const modes = $$(".mode");
+  if (design && modes.length) {
+    let idx = 0, auto = null;
+    const pick = (i) => {
+      idx = i;
+      modes.forEach((m, j) => {
+        m.classList.toggle("active", j === i);
+        m.setAttribute("aria-pressed", j === i);
+      });
+      design.style.setProperty("--mode", modes[i].dataset.color);
+    };
+    modes.forEach((m, i) => {
+      m.style.setProperty("--c", m.dataset.color);
+      m.addEventListener("click", () => { clearInterval(auto); auto = null; pick(i); });
+    });
+    new IntersectionObserver((e) => {
+      if (e[0].isIntersecting && auto === null && !design.dataset.touched) {
+        auto = setInterval(() => pick((idx + 1) % modes.length), 2600);
+      } else if (!e[0].isIntersecting && auto) { clearInterval(auto); auto = null; }
+    }, { threshold: 0.3 }).observe(design);
+    modes.forEach((m) => m.addEventListener("click", () => { design.dataset.touched = "1"; }));
+  }
+
+  /* ---------- steps follow the brush film ---------- */
+  const steps = $$(".step-list li");
+  document.addEventListener("filmscene", (e) => {
+    steps.forEach((li, i) => li.classList.toggle("active", i === e.detail));
+  });
+
   /* ---------- newsletter ---------- */
   $$(".newsletter").forEach((f) => f.addEventListener("submit", (e) => {
     e.preventDefault();

@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aprilous — ניקוי וחיטוי UV למברשות איפור</title>
-  <meta name="description" content="Aprilous — המכשיר החכם שמנקה, מייבש ומחטא את מברשות האיפור שלך בקרינת UV-C תוך דקה. 99.9% פחות חיידקים, עור נקי וזוהר.">
+  <title>Luné by Aprilous — ניקוי, ייבוש וחיטוי UV למברשות איפור</title>
+  <meta name="description" content="Luné by Aprilous — המכשיר שמנקה, מייבש ומחטא את מברשות האיפור שלך בקרינת UV-C. 99% פחות חיידקים, 5 מצבי תאורה, שקט של 40dB.">
   <meta name="theme-color" content="#fffaf6">
   <meta property="og:title" content="Aprilous — מברשות נקיות. עור זוהר.">
-  <meta property="og:description" content="ניקוי, ייבוש וחיטוי UV-C למברשות האיפור שלך — בפחות מדקה.">
+  <meta property="og:description" content="ניקוי, ייבוש וחיטוי UV-C למברשות האיפור שלך. Late Pledge פתוח — עד 50% הנחה.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%232e1621'/><text x='16' y='22' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='18' fill='%23f9d8de'>a</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,17 +16,18 @@
 </head>
 <body>
 
-  <div class="announce">✦ משלוח חינם בהזמנה מעל ₪299 · <strong>השקה: 20% הנחה על ערכת Glow</strong> ✦</div>
+  <div class="announce">✦ ה-Late Pledge פתוח עכשיו · <strong>עד 50% הנחה לפני המכירה בחנויות</strong> ✦</div>
 
   <header class="nav">
     <div class="container nav-inner">
       <a href="index.html" class="logo" aria-label="Aprilous — דף הבית"><span class="logo-dot"></span>aprilous</a>
       <nav class="nav-links" aria-label="ניווט ראשי">
         <a href="index.html" aria-current="page">בית</a>
+        <a href="#design">עיצוב</a>
         <a href="#how">איך זה עובד</a>
+        <a href="#uv">UV-C</a>
         <a href="products.html">מוצרים</a>
-        <a href="#reviews">ביקורות</a>
-        <a href="#faq">שאלות</a>
+        <a href="#pledge">Late Pledge</a>
       </nav>
       <div class="nav-actions">
         <button class="icon-btn" data-open-cart aria-label="פתיחת סל הקניות">
@@ -41,35 +42,114 @@
   </header>
 
   <main>
-    <!-- ================= HERO ================= -->
+    <!-- ================= 1 · HERO: the real product video ================= -->
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow reveal">Clean beauty · UV-C technology</span>
+          <span class="eyebrow reveal">Luné by Aprilous</span>
           <h1 class="reveal d1">המברשות שלך<br>ראויות ל<span class="gradient-text">ניקיון מושלם</span></h1>
-          <p class="lead reveal d2">Aprilous מנקה, מייבשת ומחטאת את מברשות האיפור שלך בקרינת UV-C — בפחות מדקה. בלי לשפשף, בלי לחכות שיתייבשו, בלי חיידקים על הפנים.</p>
+          <p class="lead reveal d2">Luné מנקה, מייבשת ומחטאת את מברשות האיפור שלך — הכל במכשיר אחד, עיצובי מספיק כדי שתשאירי אותו על השידה.</p>
           <div class="hero-cta reveal d3">
-            <a href="products.html" class="btn btn-primary">לקנייה עכשיו <span class="arrow">←</span></a>
+            <a href="#pledge" class="btn btn-primary">עד 50% הנחה ב-Late Pledge <span class="arrow">←</span></a>
             <a href="#how" class="btn btn-ghost">איך זה עובד?</a>
           </div>
           <div class="hero-proof reveal d3">
             <div class="avatars">
               <span style="background:#e0879a">נ</span><span style="background:#a57bff">ש</span><span style="background:#c9a27a">מ</span><span style="background:#5a3947">ר</span>
             </div>
-            <div><span class="stars">★★★★★</span><br>4.9 מתוך 2,300+ ביקורות</div>
+            <div><span class="stars">★★★★★</span><br>קמפיין Kickstarter שהסתיים בהצלחה</div>
           </div>
         </div>
 
         <div class="hero-visual reveal d2">
-          <div class="player">
-            <canvas id="heroFilm" aria-label="אנימציה: מברשות איפור מסתובבות בתוך מכשיר Aprilous — ניקוי, ייבוש וחיטוי UV" role="img"></canvas>
+          <div class="player video-player">
+            <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/video/brush-spin-poster.webp" aria-label="מברשת איפור מסתובבת על משטח הסיליקון של Luné">
+              <source src="assets/video/brush-spin.webm" type="video/webm">
+              <source src="assets/video/brush-spin.mp4" type="video/mp4">
+            </video>
             <div class="player-top">
-              <span class="chip"><span class="rec"></span>Aprilous in action</span>
-              <span class="chip" id="filmTime" dir="ltr">0:00</span>
+              <span class="chip"><span class="rec"></span>Luné in action</span>
+            </div>
+            <div class="video-caption">
+              <span class="step-no">SPIN · CLEAN · DRY · UV</span>
+              <strong>ניקוי בסחרור על משטח סיליקון כפול</strong>
+            </div>
+            <button class="play-btn video-toggle" aria-label="השהיית הסרטון">
+              <svg width="12" height="12" viewBox="0 0 12 12"><rect x="2" y="1" width="3" height="10" rx="1" fill="currentColor"/><rect x="7" y="1" width="3" height="10" rx="1" fill="currentColor"/></svg>
+            </button>
+          </div>
+          <div class="float-card a"><span class="ico">✦</span><div><b>99%</b>פחות חיידקים</div></div>
+          <div class="float-card b"><span class="ico">☾</span><div><b>40dB</b>שקט כמו לחישה</div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>ניקוי בסחרור</span><span>ייבוש בחום עדין</span><span>חיטוי UV-C</span><span>5 מצבי תאורה</span><span>מ-2 עד 25 מ״מ</span><span>שקט 40dB</span>
+        <span>ניקוי בסחרור</span><span>ייבוש בחום עדין</span><span>חיטוי UV-C</span><span>5 מצבי תאורה</span><span>מ-2 עד 25 מ״מ</span><span>שקט 40dB</span>
+      </div>
+    </div>
+
+    <!-- ================= 2 · DESIGN: pretty enough to leave out ================= -->
+    <section class="section design" id="design" style="--mode:#ffb36b">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tagline">פיסולי בצורה. מוקפד בנוכחות. יפה בדיוק כמו שהוא חיוני.</span>
+          <h2>יפה מכדי<br><span class="gradient-text">להחביא במגירה</span></h2>
+          <p><strong>כל סנטימטר על השידה שלך חשוב.</strong> לא רצינו ש-Luné יהיה עוד גאדג׳ט שנעלם במגירה — עיצבנו אותו כ<strong>פריט תצוגה</strong>, משהו שתשאירי בחוץ בגאווה.</p>
+        </div>
+
+        <figure class="lineup reveal">
+          <span class="lineup-glow" aria-hidden="true"></span>
+          <img src="assets/img/lune-lineup.webp" alt="מכשירי Luné בחמישה צבעים: תכלת, ורוד, שחור, כסוף וצהוב" width="1124" height="432" loading="lazy">
+        </figure>
+
+        <p class="section-note reveal">זה יותר ממכשיר ניקוי — זו <strong>תאורת אווירה לחדר שלך</strong>. הרפידה השקופה מזכירה <strong>גן זן</strong>, וחמישה מצבי תאורה משתנים לפי מצב הרוח. נגיעה בבסיס מחליפה ביניהם.</p>
+
+        <div class="modes reveal" role="group" aria-label="מצבי תאורה">
+          <button class="mode active" data-color="#ffb36b" aria-pressed="true">
+            <svg viewBox="0 0 48 32" aria-hidden="true"><path d="M12 24a12 12 0 0 1 24 0Z" fill="currentColor"/><path d="M4 24h40M10 28h28M24 2v6M10 8l4 4M38 8l-4 4M3 17h5M40 17h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <strong>Morning Mode</strong><small>Sunrise Glow · זריחה</small>
+          </button>
+          <button class="mode" data-color="#ff7d97" aria-pressed="false">
+            <svg viewBox="0 0 48 32" aria-hidden="true"><path d="M6 6h36a18 18 0 0 1-36 0Z" fill="currentColor"/><path d="M10 8h28a14 14 0 0 1-28 0Z" fill="#fff" opacity=".35"/><g fill="#fff"><circle cx="18" cy="12" r="1.3"/><circle cx="24" cy="15" r="1.3"/><circle cx="30" cy="12" r="1.3"/></g></svg>
+            <strong>Daydream Mode</strong><small>Melon Mist · אבטיח</small>
+          </button>
+          <button class="mode" data-color="#c77dff" aria-pressed="false">
+            <svg viewBox="0 0 48 32" aria-hidden="true"><circle cx="24" cy="16" r="9" fill="currentColor"/><path d="M15 16 5 8v16ZM33 16l10-8v16Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <strong>Play Mode</strong><small>Candy Party · סוכריות</small>
+          </button>
+          <button class="mode" data-color="#ff8a5c" aria-pressed="false">
+            <svg viewBox="0 0 48 32" aria-hidden="true"><path d="M14 24a10 10 0 0 1 20 0Z" fill="currentColor"/><path d="M6 24h36M12 28h24M16 6l3 4M24 3v5M32 6l-3 4M38 11l-4 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <strong>Sunset Mode</strong><small>Evening Bloom · שקיעה</small>
+          </button>
+          <button class="mode" data-color="#7a8cff" aria-pressed="false">
+            <svg viewBox="0 0 48 32" aria-hidden="true"><path d="M27 4a12 12 0 1 0 10 18A13 13 0 0 1 27 4Z" fill="currentColor"/><path d="M36 5v6M33 8h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <strong>Calm Mode</strong><small>Midnight Serenity · לילה</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3 · HOW IT WORKS: animated film + steps ================= -->
+    <section class="section how" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">שלושה שלבים · לחיצה אחת</span>
+          <h2>טקס יופי קטן,<br><span class="latin gradient-text">big glow</span></h2>
+          <p>מכניסים את המברשת, לוחצים פעם אחת — ו-Luné עושה את כל השאר.</p>
+        </div>
+        <div class="how-grid">
+          <div class="player film reveal">
+            <canvas id="brushFilm" aria-label="אנימציה: מברשות איפור מסתובבות במכשיר — ניקוי, ייבוש וחיטוי UV" role="img"></canvas>
+            <div class="player-top">
+              <span class="chip"><span class="rec"></span>The ritual</span>
+              <span class="chip film-time" dir="ltr">0:00</span>
             </div>
             <div class="player-caption">
               <div class="step-no" dir="ltr">01 / 04</div>
-              <div class="step-title">ניקוי עמוק בסחרור</div>
+              <div class="step-title">ניקוי בסחרור</div>
             </div>
             <div class="player-bar">
               <button class="play-btn" aria-label="השהיית הסרטון"></button>
@@ -81,116 +161,110 @@
               </div>
             </div>
           </div>
-          <div class="float-card a"><span class="ico">✦</span><div><b>99.9%</b>פחות חיידקים</div></div>
-          <div class="float-card b"><span class="ico">⟳</span><div><b>10 שניות</b>ייבוש מלא</div></div>
+          <ol class="step-list">
+            <li class="reveal active"><span class="num">01</span><div><h3>ניקוי בסחרור</h3><p>המברשת מסתובבת על משטח סיליקון כפול שכמו מעסה כל שערה ומשחרר שאריות מייקאפ, שמן ואבק.</p></div></li>
+            <li class="reveal d1"><span class="num">02</span><div><h3>ייבוש עדין ושקט</h3><p>חום PTC חכם מייבש באופן אחיד ועדין, בלי שהמים יחלחלו לבסיס המברשת.</p></div></li>
+            <li class="reveal d2"><span class="num">03</span><div><h3>חיטוי UV-C</h3><p>3 נורות UV-C משמידות 99% מהחיידקים — אוטומטית בכל מחזור ייבוש.</p></div></li>
+            <li class="reveal d3"><span class="num">04</span><div><h3>נקייה, רכה, מוכנה</h3><p>בבוקר מחכות לך מברשות אווריריות, חמימות ומוכנות ליום.</p></div></li>
+          </ol>
         </div>
       </div>
     </section>
 
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>ניקוי בסחרור</span><span>ייבוש מהיר</span><span>חיטוי UV-C</span><span>עור נקי יותר</span><span>מברשות רכות לאורך זמן</span><span>ידידותי לטבע</span>
-        <span>ניקוי בסחרור</span><span>ייבוש מהיר</span><span>חיטוי UV-C</span><span>עור נקי יותר</span><span>מברשות רכות לאורך זמן</span><span>ידידותי לטבע</span>
-      </div>
-    </div>
-
-    <!-- ================= HOW IT WORKS ================= -->
-    <section class="section" id="how">
+    <!-- ================= 4 · UV: the clean beyond clean ================= -->
+    <section class="section uv-section" id="uv">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">שלושה צעדים · דקה אחת</span>
-          <h2>טקס יופי קטן,<br><span class="latin gradient-text">big glow</span></h2>
-          <p>מכניסים את המברשת, לוחצים פעם אחת — ו-Aprilous עושה את כל השאר.</p>
+          <span class="tagline">לנקות את מה שרואים. לטהר את מה שלא. להשלים את השגרה.</span>
+          <h2>ניקיון <span class="gradient-text">שמעבר לניקיון</span></h2>
+          <p><strong>שקט נפשי בכוח UV.</strong> נראה נקי? תחשבי שוב.</p>
         </div>
-        <div class="steps">
-          <article class="step reveal">
-            <div class="step-visual bubbles">
-              <svg class="spin-brush" viewBox="0 0 70 70" aria-hidden="true"><circle cx="35" cy="35" r="30" fill="#f2b9c4"/><g stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M35 10v12M35 48v12M10 35h12M48 35h12M17 17l8 8M45 45l8 8M53 17l-8 8M25 45l-8 8"/></g><circle cx="35" cy="35" r="8" fill="#a24d63"/></svg>
-              <i></i><i></i><i></i><i></i>
-            </div>
-            <span class="num">01</span>
-            <h3>ניקוי בסחרור</h3>
-            <p>המברשת מסתובבת במהירות של 10,000 סל״ד בתוך מי סבון עדינים ומשחררת כל שארית של מייקאפ, שמן ואבק.</p>
-          </article>
-          <article class="step reveal d1">
-            <div class="step-visual drops">
-              <svg class="spin-brush" viewBox="0 0 70 70" aria-hidden="true"><circle cx="35" cy="35" r="30" fill="#f7d3b8"/><path d="M35 8a27 27 0 0 1 27 27" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M35 62A27 27 0 0 1 8 35" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="35" cy="35" r="8" fill="#c9a27a"/></svg>
-              <i></i><i></i><i></i><i></i><i></i>
-            </div>
-            <span class="num">02</span>
-            <h3>ייבוש מיידי</h3>
-            <p>כוח צנטריפוגלי מוציא את המים מהשערות תוך 10 שניות. המברשת יוצאת יבשה, רכה ומוכנה לשימוש.</p>
-          </article>
-          <article class="step reveal d2">
-            <div class="step-visual">
-              <span class="uv-glow"></span>
-              <svg class="spin-brush slow" viewBox="0 0 70 70" aria-hidden="true"><circle cx="35" cy="35" r="30" fill="#a57bff"/><g fill="#fff"><path d="M35 14l3 11 11 3-11 3-3 11-3-11-11-3 11-3z"/><circle cx="50" cy="48" r="3"/><circle cx="20" cy="50" r="2"/></g></svg>
-            </div>
-            <span class="num">03</span>
-            <h3>חיטוי UV-C</h3>
-            <p>נורות UV-C באורך גל 275nm משמידות 99.9% מהחיידקים והבקטריות — הסיבה מספר אחת לפצעונים ולגירויים.</p>
-          </article>
+        <div class="spec-cards">
+          <div class="spec reveal">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="2.4"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 4v4M20 32v4M4 20h4M32 20h4M8.7 8.7l2.8 2.8M28.5 28.5l2.8 2.8M31.3 8.7l-2.8 2.8M11.5 28.5l-2.8 2.8"/></g></svg>
+            <b data-count="3">0</b><span>נורות UV-C</span>
+          </div>
+          <div class="spec reveal d1">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M20 20V5a15 15 0 0 1 13 22.5Z" fill="currentColor"/></svg>
+            <b data-count="120" data-suffix="°">0°</b><span>זווית פיזור</span>
+          </div>
+          <div class="spec reveal d2">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="21" r="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="66 22"/><path d="M20 12v9l6 4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <b data-count="10">0</b><span>דקות לשקט נפשי</span>
+          </div>
+        </div>
+        <p class="section-note reveal">3 נורות ה-UV-C של Luné פרוסות בזווית זהב של 120° ומשמידות <strong>99% מהחיידקים</strong>. הן נדלקות אוטומטית בכל מחזור ייבוש — או לבד, בנגיעה אחת.</p>
+        <div class="jewelry reveal">
+          <span aria-hidden="true">💍</span>
+          <p>לא רק מברשות. לא רק ספוגים. גם <strong>טבעות, עגילים ושרשראות</strong> — Luné שומר על הכל נקי באמת, מבפנים ומבחוץ.</p>
         </div>
       </div>
     </section>
 
-    <!-- ================= SPLIT FEATURE ================= -->
-    <section class="section" style="padding-top:0">
-      <div class="container split">
-        <div class="split-media reveal">
-          <span class="ring"></span>
-          <img src="assets/img/device.svg" alt="מכשיר Aprilous בצבע ורוד פודרה עם כיפת זכוכית וטבעת UV סגולה" width="400" height="480">
-        </div>
-        <div class="reveal d1">
-          <span class="eyebrow">למה Aprilous</span>
-          <h2 style="margin:16px 0 18px">העור שלך מתחיל<br>ב<span class="gradient-text">מברשת נקייה</span></h2>
-          <p class="lead">מחקרים מראים שמברשת איפור שלא נוקתה שבוע מכילה יותר חיידקים ממושב אסלה. Aprilous הופכת את הניקוי להרגל של שנייה.</p>
-          <ul class="feature-list">
-            <li><span class="ico">🫧</span><div><h3>מתאים לכל מברשת</h3><p>8 מתאמי סיליקון לכל גודל — מפאונדיישן ועד אייליינר, וגם ספוג איפור.</p></div></li>
-            <li><span class="ico">🔋</span><div><h3>נטען ב-USB-C</h3><p>סוללה אחת מספיקה ל-60 מחזורי ניקוי. קל, שקט ומושלם לנסיעות.</p></div></li>
-            <li><span class="ico">🌿</span><div><h3>שומר על המברשות</h3><p>בלי שפשוף וקיפול שערות — המברשות נשארות רכות ומחזיקות שנים.</p></div></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= STATS ================= -->
-    <section class="container reveal">
-      <div class="stats">
-        <div class="stat"><b data-count="99.9" data-suffix="%">0%</b><span>הפחתת חיידקים</span></div>
-        <div class="stat"><b data-count="10" data-suffix="s">0s</b><span>ייבוש מלא</span></div>
-        <div class="stat"><b data-count="60" data-suffix="+">0+</b><span>מחזורים בטעינה</span></div>
-        <div class="stat"><b data-count="4.9" data-suffix="★">0★</b><span>דירוג לקוחות</span></div>
-      </div>
-    </section>
-
-    <!-- ================= GALLERY ================= -->
-    <section class="section" id="gallery">
+    <!-- ================= 5 · DRY: dry in style ================= -->
+    <section class="section dry" id="dry">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">The Aprilous world</span>
-          <h2>עיצוב שנולד<br>להיות על <span class="gradient-text">הוויטרינה שלך</span></h2>
-          <p>פסטלים רכים, קווים נקיים וגימור מט — Aprilous נראית טוב בדיוק כמו שהיא עובדת.</p>
+          <span class="tagline">רכות למגע. חמימות מבפנים. מוכנות להתחיל את היום.</span>
+          <h2>ייבוש <span class="gradient-text">בסטייל</span></h2>
+          <p><strong>מהיר יותר, בטוח יותר, רך יותר.</strong></p>
         </div>
-        <div class="gallery">
-          <a href="products.html" class="tile big reveal">
-            <img src="assets/img/device.svg" alt="מכשיר Aprilous" loading="lazy" width="400" height="480">
-            <div class="label"><small>The device</small><strong>Aprilous Glow</strong></div>
-          </a>
-          <a href="products.html" class="tile t2 reveal d1">
-            <img src="assets/img/brushes.svg" alt="סט מברשות Aprilous" loading="lazy" width="400" height="480">
-            <div class="label"><small>Brush set</small><strong>סט המברשות</strong></div>
-          </a>
-          <a href="products.html" class="tile t3 reveal d2">
-            <img src="assets/img/cleanser.svg" alt="סבון ניקוי Aprilous Foam" loading="lazy" width="400" height="480">
-            <div class="label"><small>Cleanser</small><strong>Aprilous Foam</strong></div>
-          </a>
-          <a href="products.html" class="tile t4 reveal d1">
-            <span class="uv-glow"></span>
-            <img src="assets/img/device.svg" alt="" loading="lazy" width="400" height="480">
-            <div class="label"><small>UV-C · 275nm</small><strong>ניקיון שרואים.<br>חיטוי שמרגישים.</strong></div>
-          </a>
+
+        <div class="dry-story">
+          <div class="problem reveal">
+            <span class="kicker">הבעיה</span>
+            <p>לחכות שהמברשות יתייבשו זה הימור. הן יכולות <strong>להריח מוזר, להתייבש דביקות, לאבד צורה</strong> — או גרוע מזה, <strong>לספוג מים לתוך הבסיס</strong> ולהתחיל להתפרק.</p>
+          </div>
+          <div class="solution reveal d1">
+            <span class="kicker">Luné משנה את החוקים</span>
+            <p>עם <strong>חום PTC חכם</strong> ו<strong>טכנולוגיית Fiber-Safe</strong>, Luné מייבש את המברשות <strong>באופן אחיד, שקט ועדין</strong> — ומגן על שערות עדינות מהתייבשות, התפצלות והתפוררות.</p>
+          </div>
         </div>
+
+        <p class="section-note reveal">מקבלת <strong>4 מצבי טמפרטורה</strong> לכל סוג שיער ולכל לו״ז:</p>
+        <div class="temps">
+          <div class="temp reveal"><h3>Air Dry</h3><span class="deg">טמפ׳ החדר</span><span class="fibers">סנאי · קולינסקי</span><span class="for">לשערות עדינות במיוחד</span></div>
+          <div class="temp reveal d1"><h3>Gentle</h3><span class="deg" dir="ltr">35–40°C</span><span class="fibers">שיער פוני · שיער עיזים</span><span class="for">לשערות טבעיות</span></div>
+          <div class="temp reveal d2"><h3>Standard</h3><span class="deg" dir="ltr">45–50°C</span><span class="fibers">מברשות · ספוגים</span><span class="for">לרוב השימושים</span></div>
+          <div class="temp hot reveal d3"><h3>Fast</h3><span class="deg" dir="ltr">55–60°C</span><span class="fibers">כשממהרות</span><span class="for">לסבב מהיר</span></div>
+        </div>
+
+        <div class="timers reveal">
+          <span><b>150</b> דקות</span><i></i><span><b>180</b> דקות</span><i></i><span><b>210</b> דקות</span>
+        </div>
+        <p class="section-note reveal">עם <strong>טיימרים מתכווננים</strong> הייבוש נעשה בלי ידיים. מנקות לפני השינה — ומתעוררות למברשות שמרגישות כמו עננים: אווריריות, חמימות ומוכנות ליום.</p>
+        <p class="quiet reveal">הייבוש נשאר <strong>שקט כמו לחישה — 40dB בלבד</strong>. גימור חלק יותר, וכלים שמחזיקים יותר זמן.</p>
+      </div>
+    </section>
+
+    <!-- ================= 6 · FIT: one device to clean them all ================= -->
+    <section class="section fit" id="fit">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tagline">מדויק. רב-שימושי. שלם באופן מפתיע.</span>
+          <h2>מכשיר אחד <span class="gradient-text">שמנקה את כולן</span></h2>
+          <p><strong>מקאבוקי ועד ספוג קושן.</strong></p>
+        </div>
+        <div class="fit-grid">
+          <div class="fit-card reveal">
+            <img src="assets/img/brushes.svg" alt="" width="400" height="480" loading="lazy">
+            <h3>למברשות בכל צורה</h3>
+            <p>למברשות יש המון צורות. Luné נבנה להתאים לכולן.</p>
+          </div>
+          <div class="fit-card reveal d1">
+            <span class="sponge" aria-hidden="true"></span>
+            <h3>וגם לספוגים</h3>
+            <p>תכננו <strong>תושבת עם זיפים רכים</strong> שמנקה מלמעלה ומלמטה — ומגיעה לכל נקבובית שהאצבעות לא מגיעות אליה.</p>
+          </div>
+        </div>
+        <div class="adapters reveal">
+          <div class="ad lg"><b>2</b><span>גדולים</span></div>
+          <em>+</em>
+          <div class="ad md"><b>2</b><span>בינוניים</span></div>
+          <em>+</em>
+          <div class="ad sm"><b>2</b><span>קטנים</span></div>
+        </div>
+        <p class="section-note reveal">עמודי, מתרחב, מחודד. ממברשות אייליינר מדויקות של <strong dir="ltr">2mm</strong> ועד מברשות פודרה של <strong dir="ltr">25mm</strong> — כל הערכה שלך, מהפנים ועד הפרטים, בבת אחת.<br>ה<strong>סיליקון הדו-שכבתי</strong> שלנו מתגמש לכל קימור. בלי כיפוף. בלי שבירה.</p>
       </div>
     </section>
 
@@ -204,17 +278,17 @@
         <div class="reviews">
           <article class="review reveal">
             <span class="stars">★★★★★</span>
-            <p>״פעם ניקיתי מברשות פעם בחודש (אם בכלל 🙈). עכשיו זה לוקח לי דקה בערב והעור שלי פשוט נרגע. אין מצב שאני חוזרת אחורה.״</p>
+            <p>״פעם ניקיתי מברשות פעם בחודש (אם בכלל 🙈). עכשיו אני מכניסה אותן בערב ומתעוררת למברשות יבשות ורכות. אין מצב שאני חוזרת אחורה.״</p>
             <footer><span class="av" style="background:#e0879a">נ</span><div>נועה, 24<small>מאפרת פרילנסרית</small></div></footer>
           </article>
           <article class="review reveal d1">
             <span class="stars">★★★★★</span>
-            <p>״הדבר הכי מספק לראות את המברשת מסתובבת ויוצאת יבשה לגמרי. וגם — הוא כל כך יפה שהוא יושב לי על השידה כמו קישוט.״</p>
+            <p>״ה-Calm Mode דולק לי כל ערב כמו מנורת לילה. הוא כל כך יפה שהוא יושב על השידה כמו קישוט — ולא במגירה.״</p>
             <footer><span class="av" style="background:#a57bff">ש</span><div>שירה, 21<small>סטודנטית</small></div></footer>
           </article>
           <article class="review reveal d2">
             <span class="stars">★★★★★</span>
-            <p>״קניתי מתנה לאחותי ובסוף הזמנתי גם לעצמי. ה-UV זה בונוס מטורף, במיוחד למי שיש לה עור רגיש כמוני.״</p>
+            <p>״יש לי עור רגיש, וה-UV זה בונוס מטורף. גם הטבעות שלי נכנסות לשם פעם בשבוע.״</p>
             <footer><span class="av" style="background:#c9a27a">מ</span><div>מאיה, 27<small>בלוגרית ביוטי</small></div></footer>
           </article>
         </div>
@@ -231,31 +305,35 @@
         <div class="faq reveal">
           <details open>
             <summary>האם קרינת ה-UV בטוחה?</summary>
-            <p>לגמרי. נורות ה-UV-C פועלות רק כשהמכסה סגור, והמכשיר נכבה אוטומטית אם הוא נפתח. הכיפה עשויה מחומר שחוסם קרינה החוצה.</p>
+            <p>כן. נורות ה-UV-C פועלות בתוך המכשיר הסגור, אוטומטית בכל מחזור ייבוש או בנגיעה אחת, למשך 10 דקות.</p>
           </details>
           <details>
             <summary>אילו מברשות מתאימות למכשיר?</summary>
-            <p>כמעט כל מברשת — בזכות 8 מתאמי הסיליקון המצורפים, בקטרים של 3–18 מ״מ. מתאים גם לשערות טבעיות וגם לסינטטיות.</p>
+            <p>כמעט כל מברשת — 6 מתאמים (2 גדולים, 2 בינוניים, 2 קטנים) לקטרים של 2–25 מ״מ, וגם תושבת מיוחדת לספוגים.</p>
           </details>
           <details>
-            <summary>כמה זמן לוקח מחזור שלם?</summary>
-            <p>ניקוי של 15 שניות, ייבוש של 10 שניות וחיטוי UV של 30 שניות — פחות מדקה לכל מברשת.</p>
+            <summary>כמה זמן לוקח הייבוש?</summary>
+            <p>יש 4 מצבי טמפרטורה וטיימרים של 150, 180 או 210 דקות. הכי נוח: מנקות לפני השינה ומתעוררות למברשות יבשות.</p>
           </details>
           <details>
-            <summary>יש אחריות?</summary>
-            <p>כן, שנתיים אחריות מלאה ו-30 יום להחזרה אם לא התאהבת.</p>
+            <summary>מה זה Late Pledge?</summary>
+            <p>קמפיין ה-Kickstarter שלנו הסתיים בהצלחה ו-Luné בדרך לייצור. ה-Late Pledge הוא ההזדמנות האחרונה להצטרף לפני המכירה בחנויות — עם המחיר הכי טוב שיש.</p>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- ================= CTA ================= -->
-    <section class="container reveal">
-      <div class="cta-band">
-        <span class="eyebrow">מבצע השקה</span>
-        <h2>הגיע הזמן למברשות<br><span class="latin">that glow</span> ✨</h2>
-        <p>20% הנחה על ערכת Glow + סבון Foam במתנה. לזמן מוגבל בלבד.</p>
-        <a href="products.html" class="btn btn-primary">לכל המוצרים <span class="arrow">←</span></a>
+    <!-- ================= 7 · LATE PLEDGE ================= -->
+    <section class="section pledge" id="pledge" style="padding-top:0">
+      <div class="container">
+        <div class="pledge-card reveal">
+          <img src="assets/img/lune-lineup.webp" alt="חמשת צבעי Luné" width="1124" height="432" loading="lazy">
+          <span class="eyebrow">The glow continues</span>
+          <h2>ה-Late Pledge<br><span class="gradient-text">פתוח עכשיו</span></h2>
+          <p><strong>קמפיין ה-Kickstarter שלנו הסתיים בהצלחה</strong>, ו-Luné בדרך לייצור. <strong>ה-Late Pledge הוא ההזדמנות האחרונה שלך להצטרף לפני המכירה בחנויות</strong> — ולהבטיח את המחיר הכי טוב שיש.</p>
+          <div class="off">עד 50% הנחה</div>
+          <a href="products.html" class="btn btn-primary btn-xl">להצטרפות ל-Late Pledge <span class="arrow">←</span></a>
+        </div>
       </div>
     </section>
   </main>
@@ -265,7 +343,7 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="logo"><span class="logo-dot"></span>aprilous</a>
-          <p class="about">טכנולוגיית ניקוי וחיטוי UV-C למברשות איפור. כי יופי אמיתי מתחיל בניקיון.</p>
+          <p class="about">Luné by Aprilous — ניקוי, ייבוש וחיטוי UV-C למברשות איפור. כי יופי אמיתי מתחיל בניקיון.</p>
           <div class="socials">
             <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
             <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 3 2.5 5 5.5 5"/></svg></a>
@@ -274,7 +352,7 @@
         </div>
         <div>
           <h4>חנות</h4>
-          <ul><li><a href="products.html">כל המוצרים</a></li><li><a href="products.html">Aprilous Glow</a></li><li><a href="products.html">אביזרים</a></li><li><a href="products.html">מארזי מתנה</a></li></ul>
+          <ul><li><a href="products.html">כל המוצרים</a></li><li><a href="products.html">Luné</a></li><li><a href="products.html">אביזרים</a></li><li><a href="products.html">מארזי מתנה</a></li></ul>
         </div>
         <div>
           <h4>עזרה</h4>
@@ -297,6 +375,6 @@
   </footer>
 
   <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/hero-film.js" defer></script>
+  <script src="assets/js/brush-film.js" defer></script>
 </body>
 </html>

@@ -1,29 +1,30 @@
 /* ==========================================================
-   APRILOUS — hero "film"
+   APRILOUS — brush "film"
    A looping, canvas-drawn product animation in four scenes:
    wash → spin dry → UV-C → ready. Behaves like a video player
    (progress segments, play/pause, timecode) but weighs ~10KB.
    ========================================================== */
 (function () {
-  const canvas = document.getElementById("heroFilm");
+  const canvas = document.getElementById("brushFilm");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
   const W = 400, H = 440;
   const SCENE = 3.8;
   const SCENES = [
-    { title: "ניקוי עמוק בסחרור", speed: 15, flare: 3, water: 1, uv: 0 },
-    { title: "ייבוש מלא תוך 10 שניות", speed: 30, flare: 9, water: 0, uv: 0 },
-    { title: "חיטוי UV-C · 99.9%", speed: 3, flare: 1, water: 0, uv: 1 },
+    { title: "ניקוי בסחרור", speed: 15, flare: 3, water: 1, uv: 0 },
+    { title: "ייבוש עדין ושקט", speed: 30, flare: 9, water: 0, uv: 0 },
+    { title: "חיטוי UV-C · 99%", speed: 3, flare: 1, water: 0, uv: 1 },
     { title: "נקייה, רכה, מוכנה ✨", speed: 1.4, flare: 0, water: 0, uv: 0 },
   ];
   const TOTAL = SCENE * SCENES.length;
 
-  const caption = document.querySelector(".player-caption");
+  const player = canvas.closest(".player") || document;
+  const caption = player.querySelector(".player-caption");
   const titleEl = caption && caption.querySelector(".step-title");
   const noEl = caption && caption.querySelector(".step-no");
-  const timeEl = document.getElementById("filmTime");
-  const segs = [...document.querySelectorAll(".segments button")];
-  const playBtn = document.querySelector(".play-btn");
+  const timeEl = player.querySelector(".film-time");
+  const segs = [...player.querySelectorAll(".segments button")];
+  const playBtn = player.querySelector(".play-btn");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const BRUSHES = [
@@ -480,6 +481,7 @@
   function ui(s) {
     if (s.i !== curScene) {
       curScene = s.i;
+      canvas.dispatchEvent(new CustomEvent("filmscene", { bubbles: true, detail: s.i }));
       if (caption) {
         caption.classList.add("swap");
         setTimeout(() => {
