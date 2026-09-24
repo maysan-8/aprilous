@@ -1,0 +1,71 @@
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow reveal">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1 class="reveal d1 rich-heading">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}<p class="lead reveal d2">{{ section.settings.text }}</p>{%- endif -%}
+      <div class="hero-cta reveal d3">
+        {%- if section.settings.button_label != blank -%}<a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="btn btn-primary">{{ section.settings.button_label }} <span class="arrow">←</span></a>{%- endif -%}
+        {%- if section.settings.button2_label != blank -%}<a href="{{ section.settings.button2_link }}" class="btn btn-ghost">{{ section.settings.button2_label }}</a>{%- endif -%}
+      </div>
+      {%- if section.settings.proof != blank -%}
+        <div class="hero-proof reveal d3">
+          <div class="avatars" aria-hidden="true">
+            <span style="background:#e0879a">נ</span><span style="background:#a57bff">ש</span><span style="background:#c9a27a">מ</span><span style="background:#5a3947">ר</span>
+          </div>
+          <div><span class="stars">★★★★★</span><br>{{ section.settings.proof }}</div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="hero-visual reveal d2">
+      <div class="player video-player">
+        {%- if section.settings.video != blank -%}
+          {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, id: 'heroVideo', image_size: '1280x' }}
+        {%- else -%}
+          <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="{{ 'brush-spin-poster.webp' | asset_url }}" aria-label="{{ section.settings.caption | escape }}">
+            <source src="{{ 'brush-spin.webm' | asset_url }}" type="video/webm">
+            <source src="{{ 'brush-spin.mp4' | asset_url }}" type="video/mp4">
+          </video>
+        {%- endif -%}
+        {%- if section.settings.chip != blank -%}
+          <div class="player-top"><span class="chip"><span class="rec"></span>{{ section.settings.chip }}</span></div>
+        {%- endif -%}
+        <div class="video-caption">
+          <span class="step-no">{{ section.settings.caption_small }}</span>
+          <strong>{{ section.settings.caption }}</strong>
+        </div>
+        <button class="play-btn video-toggle" aria-label="{{ 'general.pause' | t }}"></button>
+      </div>
+      {%- if section.settings.card1_value != blank -%}<div class="float-card a"><span class="ico">✦</span><div><b>{{ section.settings.card1_value }}</b>{{ section.settings.card1_label }}</div></div>{%- endif -%}
+      {%- if section.settings.card2_value != blank -%}<div class="float-card b"><span class="ico">☾</span><div><b>{{ section.settings.card2_value }}</b>{{ section.settings.card2_label }}</div></div>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero with video",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Luné by Aprilous" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Italic text is shown with the brand gradient", "default": "המברשות שלך<br>ראויות ל<em>ניקיון מושלם</em>" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Luné מנקה, מייבשת ומחטאת את מברשות האיפור שלך — הכל במכשיר אחד, עיצובי מספיק כדי שתשאירי אותו על השידה." },
+    { "type": "text", "id": "button_label", "label": "Primary button", "default": "עד 50% הנחה ב-Late Pledge" },
+    { "type": "url", "id": "button_link", "label": "Primary button link" },
+    { "type": "text", "id": "button2_label", "label": "Secondary button", "default": "איך זה עובד?" },
+    { "type": "url", "id": "button2_link", "label": "Secondary button link", "default": "/#how" },
+    { "type": "text", "id": "proof", "label": "Social proof line", "default": "קמפיין Kickstarter שהסתיים בהצלחה" },
+    { "type": "header", "content": "Video" },
+    { "type": "video", "id": "video", "label": "Video", "info": "Optional. Leave empty to use the built-in brush video." },
+    { "type": "text", "id": "chip", "label": "Video tag", "default": "Luné in action" },
+    { "type": "text", "id": "caption_small", "label": "Caption (small)", "default": "SPIN · CLEAN · DRY · UV" },
+    { "type": "text", "id": "caption", "label": "Caption", "default": "ניקוי בסחרור על משטח סיליקון כפול" },
+    { "type": "header", "content": "Floating cards" },
+    { "type": "text", "id": "card1_value", "label": "Card 1 value", "default": "99%" },
+    { "type": "text", "id": "card1_label", "label": "Card 1 label", "default": "פחות חיידקים" },
+    { "type": "text", "id": "card2_value", "label": "Card 2 value", "default": "40dB" },
+    { "type": "text", "id": "card2_label", "label": "Card 2 label", "default": "שקט כמו לחישה" }
+  ],
+  "presets": [{ "name": "Hero with video" }]
+}
+{% endschema %}

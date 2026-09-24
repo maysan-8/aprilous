@@ -1,0 +1,80 @@
+{
+  "sections": {
+    "hero": { "type": "hero-video", "settings": {} },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "m1": { "type": "item", "settings": { "text": "ניקוי בסחרור" } },
+        "m2": { "type": "item", "settings": { "text": "ייבוש בחום עדין" } },
+        "m3": { "type": "item", "settings": { "text": "חיטוי UV-C" } },
+        "m4": { "type": "item", "settings": { "text": "5 מצבי תאורה" } },
+        "m5": { "type": "item", "settings": { "text": "מ-2 עד 25 מ״מ" } },
+        "m6": { "type": "item", "settings": { "text": "שקט 40dB" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"]
+    },
+    "design": {
+      "type": "design-modes",
+      "blocks": {
+        "d1": { "type": "mode", "settings": { "icon": "sunrise", "title": "Morning Mode", "subtitle": "Sunrise Glow · זריחה", "color": "#ffb36b" } },
+        "d2": { "type": "mode", "settings": { "icon": "melon", "title": "Daydream Mode", "subtitle": "Melon Mist · אבטיח", "color": "#ff7d97" } },
+        "d3": { "type": "mode", "settings": { "icon": "candy", "title": "Play Mode", "subtitle": "Candy Party · סוכריות", "color": "#c77dff" } },
+        "d4": { "type": "mode", "settings": { "icon": "sunset", "title": "Sunset Mode", "subtitle": "Evening Bloom · שקיעה", "color": "#ff8a5c" } },
+        "d5": { "type": "mode", "settings": { "icon": "moon", "title": "Calm Mode", "subtitle": "Midnight Serenity · לילה", "color": "#7a8cff" } }
+      },
+      "block_order": ["d1", "d2", "d3", "d4", "d5"]
+    },
+    "ritual": {
+      "type": "ritual-film",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "ניקוי בסחרור", "text": "המברשת מסתובבת על משטח סיליקון כפול שכמו מעסה כל שערה ומשחרר שאריות מייקאפ, שמן ואבק." } },
+        "s2": { "type": "step", "settings": { "title": "ייבוש עדין ושקט", "text": "חום PTC חכם מייבש באופן אחיד ועדין, בלי שהמים יחלחלו לבסיס המברשת." } },
+        "s3": { "type": "step", "settings": { "title": "חיטוי UV-C · 99%", "text": "3 נורות UV-C משמידות 99% מהחיידקים — אוטומטית בכל מחזור ייבוש." } },
+        "s4": { "type": "step", "settings": { "title": "נקייה, רכה, מוכנה ✨", "text": "בבוקר מחכות לך מברשות אווריריות, חמימות ומוכנות ליום." } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+    "uv": {
+      "type": "uv-specs",
+      "blocks": {
+        "u1": { "type": "spec", "settings": { "icon": "rays", "value": "3", "label": "נורות UV-C" } },
+        "u2": { "type": "spec", "settings": { "icon": "angle", "value": "120", "suffix": "°", "label": "זווית פיזור" } },
+        "u3": { "type": "spec", "settings": { "icon": "clock", "value": "10", "label": "דקות לשקט נפשי" } }
+      },
+      "block_order": ["u1", "u2", "u3"]
+    },
+    "dry": {
+      "type": "dry-modes",
+      "blocks": {
+        "t1": { "type": "temp", "settings": { "title": "Air Dry", "temperature": "טמפ׳ החדר", "fibers": "סנאי · קולינסקי", "for": "לשערות עדינות במיוחד" } },
+        "t2": { "type": "temp", "settings": { "title": "Gentle", "temperature": "35–40°C", "fibers": "שיער פוני · שיער עיזים", "for": "לשערות טבעיות" } },
+        "t3": { "type": "temp", "settings": { "title": "Standard", "temperature": "45–50°C", "fibers": "מברשות · ספוגים", "for": "לרוב השימושים" } },
+        "t4": { "type": "temp", "settings": { "title": "Fast", "temperature": "55–60°C", "fibers": "כשממהרות", "for": "לסבב מהיר" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    },
+    "fit": { "type": "fit-adapters", "settings": {} },
+    "shop": { "type": "featured-collection", "settings": {} },
+    "reviews": {
+      "type": "reviews",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "quote": "״פעם ניקיתי מברשות פעם בחודש (אם בכלל 🙈). עכשיו אני מכניסה אותן בערב ומתעוררת למברשות יבשות ורכות.״", "name": "נועה, 24", "role": "מאפרת פרילנסרית", "stars": 5, "color": "#e0879a" } },
+        "r2": { "type": "review", "settings": { "quote": "״ה-Calm Mode דולק לי כל ערב כמו מנורת לילה. הוא כל כך יפה שהוא יושב על השידה כמו קישוט.״", "name": "שירה, 21", "role": "סטודנטית", "stars": 5, "color": "#a57bff" } },
+        "r3": { "type": "review", "settings": { "quote": "״יש לי עור רגיש, וה-UV זה בונוס מטורף. גם הטבעות שלי נכנסות לשם פעם בשבוע.״", "name": "מאיה, 27", "role": "בלוגרית ביוטי", "stars": 5, "color": "#c9a27a" } }
+      },
+      "block_order": ["r1", "r2", "r3"]
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "האם קרינת ה-UV בטוחה?", "answer": "<p>כן. נורות ה-UV-C פועלות בתוך המכשיר הסגור, אוטומטית בכל מחזור ייבוש או בנגיעה אחת, למשך 10 דקות.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "אילו מברשות מתאימות למכשיר?", "answer": "<p>כמעט כל מברשת — 6 מתאמים (2 גדולים, 2 בינוניים, 2 קטנים) לקטרים של 2–25 מ״מ, וגם תושבת מיוחדת לספוגים.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "כמה זמן לוקח הייבוש?", "answer": "<p>יש 4 מצבי טמפרטורה וטיימרים של 150, 180 או 210 דקות. הכי נוח: מנקות לפני השינה ומתעוררות למברשות יבשות.</p>" } },
+        "q4": { "type": "question", "settings": { "question": "מה זה Late Pledge?", "answer": "<p>קמפיין ה-Kickstarter שלנו הסתיים בהצלחה ו-Luné בדרך לייצור. ה-Late Pledge הוא ההזדמנות האחרונה להצטרף לפני המכירה בחנויות — עם המחיר הכי טוב שיש.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"]
+    },
+    "pledge": { "type": "late-pledge", "settings": {} }
+  },
+  "order": ["hero", "marquee", "design", "ritual", "uv", "dry", "fit", "shop", "reviews", "faq", "pledge"]
+}

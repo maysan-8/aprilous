@@ -1,0 +1,30 @@
+{%- comment -%}
+  Outputs a CSS colour for a colour option value.
+  Uses Shopify's swatch colour when the merchant set one, then known Luné colour names, then the value itself.
+{%- endcomment -%}
+{%- liquid
+  assign key = value | downcase | strip
+  if value.swatch.color
+    assign key = 'shopify-swatch'
+  endif
+  case key
+    when 'shopify-swatch'
+      echo value.swatch.color
+    when 'blush pink', 'pink', 'ורוד', 'ורוד פודרה'
+      echo '#f3c9cf'
+    when 'sky blue', 'blue', 'תכלת', 'כחול'
+      echo '#bcd8ea'
+    when 'butter yellow', 'yellow', 'צהוב'
+      echo '#f0dc9c'
+    when 'silver', 'כסוף', 'כסף'
+      echo '#d4d6dc'
+    when 'midnight', 'black', 'שחור', 'חצות'
+      echo '#3a3f4b'
+    when 'lilac', 'purple', 'סגול', 'לילך'
+      echo '#d9c4ff'
+    when 'white', 'לבן'
+      echo '#ffffff'
+    else
+      echo key | replace: ' ', ''
+  endcase
+-%}

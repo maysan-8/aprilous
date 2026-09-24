@@ -1,0 +1,37 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "eyebrow": { "type": "eyebrow", "settings": {} },
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "description": { "type": "description", "settings": {} },
+        "variant_picker": { "type": "variant_picker", "settings": {} },
+        "features": { "type": "features", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": false } },
+        "trust": { "type": "trust", "settings": {} }
+      },
+      "block_order": ["eyebrow", "title", "price", "description", "variant_picker", "features", "buy_buttons", "trust"]
+    },
+    "ritual": {
+      "type": "ritual-film",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "ניקוי בסחרור", "text": "המברשת מסתובבת על משטח סיליקון כפול שכמו מעסה כל שערה ומשחרר שאריות מייקאפ, שמן ואבק." } },
+        "s2": { "type": "step", "settings": { "title": "ייבוש עדין ושקט", "text": "חום PTC חכם מייבש באופן אחיד ועדין, בלי שהמים יחלחלו לבסיס המברשת." } },
+        "s3": { "type": "step", "settings": { "title": "חיטוי UV-C · 99%", "text": "3 נורות UV-C משמידות 99% מהחיידקים — אוטומטית בכל מחזור ייבוש." } },
+        "s4": { "type": "step", "settings": { "title": "נקייה, רכה, מוכנה ✨", "text": "בבוקר מחכות לך מברשות אווריריות, חמימות ומוכנות ליום." } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "האם קרינת ה-UV בטוחה?", "answer": "<p>כן. נורות ה-UV-C פועלות בתוך המכשיר הסגור, אוטומטית בכל מחזור ייבוש או בנגיעה אחת, למשך 10 דקות.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "אילו מברשות מתאימות למכשיר?", "answer": "<p>כמעט כל מברשת — 6 מתאמים לקטרים של 2–25 מ״מ, וגם תושבת מיוחדת לספוגים.</p>" } }
+      },
+      "block_order": ["q1", "q2"]
+    }
+  },
+  "order": ["main", "ritual", "faq"]
+}

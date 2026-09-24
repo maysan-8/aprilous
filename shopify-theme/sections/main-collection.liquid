@@ -1,0 +1,41 @@
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+    <h1>{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}<div class="page-hero-text rte">{{ collection.description }}</div>{%- endif -%}
+  </div>
+</section>
+<section class="section" style="padding-top:40px">
+  <div class="container">
+    {%- paginate collection.products by section.settings.per_page -%}
+      {%- if collection.all_types.size > 1 and section.settings.show_filters -%}
+        <div class="filters" role="group" aria-label="{{ 'collections.filter' | t }}">
+          <button class="active" data-filter="all">{{ 'collections.all' | t }}</button>
+          {%- for type in collection.all_types -%}
+            {%- if type != blank -%}<button data-filter="{{ type | handleize }}">{{ type }}</button>{%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      <div class="product-grid">
+        {%- for product in collection.products -%}
+          {%- assign bg = forloop.index0 | modulo: 4 | plus: 1 -%}
+          {% render 'product-card', product: product, bg: bg %}
+        {%- else -%}
+          <p class="empty-note">{{ 'collections.empty' | t }}</p>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}<nav class="pagination">{{ paginate | default_pagination }}</nav>{%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The collection" },
+    { "type": "range", "id": "per_page", "label": "Products per page", "min": 6, "max": 24, "step": 3, "default": 12 },
+    { "type": "checkbox", "id": "show_filters", "label": "Show product-type filters", "default": true }
+  ]
+}
+{% endschema %}

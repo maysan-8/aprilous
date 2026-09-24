@@ -1,0 +1,44 @@
+<section class="section" id="shop">
+  <div class="container">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    {%- liquid
+      assign coll = section.settings.collection
+      if coll == blank
+        assign coll = collections.all
+      endif
+    -%}
+    <div class="product-grid">
+      {%- if coll.products_count > 0 -%}
+        {%- for product in coll.products limit: section.settings.limit -%}
+          {%- assign bg = forloop.index0 | modulo: 4 | plus: 1 -%}
+          {% render 'product-card', product: product, bg: bg %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..3) -%}
+          <article class="product placeholder-card">
+            <div class="product-media bg{{ i }}"><img src="{{ 'device.svg' | asset_url }}" alt="" width="400" height="480"></div>
+            <div class="product-body"><h3>{{ 'sections.featured.placeholder' | t }}</h3></div>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+    {%- if section.settings.show_all and coll.products_count > 0 -%}
+      <div class="center-cta"><a href="{{ coll.url | default: routes.all_products_collection_url }}" class="btn btn-ghost">{{ 'sections.featured.view_all' | t }}</a></div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured products",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "הערכה <em>שלך</em>" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "collection", "id": "collection", "label": "Collection", "info": "Leave empty to show all products" },
+    { "type": "range", "id": "limit", "label": "Products to show", "min": 3, "max": 12, "step": 1, "default": 6 },
+    { "type": "checkbox", "id": "show_all", "label": "Show 'view all' button", "default": true }
+  ],
+  "presets": [{ "name": "Featured products" }]
+}
+{% endschema %}

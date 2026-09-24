@@ -1,0 +1,17 @@
+<section class="page-hero"><div class="container"><h1>{{ 'collections.all_collections' | t }}</h1></div></section>
+<section class="section" style="padding-top:20px">
+  <div class="container product-grid">
+    {%- for collection in collections -%}
+      <a class="product" href="{{ collection.url }}">
+        <div class="product-media bg{{ forloop.index0 | modulo: 4 | plus: 1 }}">
+          {%- if collection.featured_image -%}{{ collection.featured_image | image_url: width: 800 | image_tag: loading: 'lazy' }}{%- else -%}<img src="{{ 'device.svg' | asset_url }}" alt="" width="400" height="480">{%- endif -%}
+        </div>
+        <div class="product-body"><h3>{{ collection.title }}</h3><p>{{ collection.products_count }} {{ 'collections.products' | t }}</p></div>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Collections list" }
+{% endschema %}

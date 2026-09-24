@@ -1,0 +1,53 @@
+<section class="section fit" id="fit">
+  <div class="container">
+    {% render 'section-head', tagline: section.settings.tagline, heading: section.settings.heading, text: section.settings.text %}
+    <div class="fit-grid">
+      <div class="fit-card reveal">
+        {%- if section.settings.brush_image != blank -%}
+          {{ section.settings.brush_image | image_url: width: 400 | image_tag: loading: 'lazy' }}
+        {%- else -%}
+          <img src="{{ 'brushes.svg' | asset_url }}" alt="" width="400" height="480" loading="lazy">
+        {%- endif -%}
+        <h3>{{ section.settings.brush_title }}</h3>{{ section.settings.brush_text }}
+      </div>
+      <div class="fit-card reveal d1">
+        {%- if section.settings.sponge_image != blank -%}
+          {{ section.settings.sponge_image | image_url: width: 400 | image_tag: loading: 'lazy' }}
+        {%- else -%}
+          <span class="sponge" aria-hidden="true"></span>
+        {%- endif -%}
+        <h3>{{ section.settings.sponge_title }}</h3>{{ section.settings.sponge_text }}
+      </div>
+    </div>
+    <div class="adapters reveal">
+      <div class="ad lg"><b>{{ section.settings.large }}</b><span>{{ 'sections.adapters.large' | t }}</span></div>
+      <em>+</em>
+      <div class="ad md"><b>{{ section.settings.medium }}</b><span>{{ 'sections.adapters.medium' | t }}</span></div>
+      <em>+</em>
+      <div class="ad sm"><b>{{ section.settings.small }}</b><span>{{ 'sections.adapters.small' | t }}</span></div>
+    </div>
+    {%- if section.settings.note != blank -%}<div class="section-note reveal">{{ section.settings.note }}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Adapters",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "מדויק. רב-שימושי. שלם באופן מפתיע." },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "מכשיר אחד <em>שמנקה את כולן</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p><strong>מקאבוקי ועד ספוג קושן.</strong></p>" },
+    { "type": "image_picker", "id": "brush_image", "label": "Brushes image" },
+    { "type": "text", "id": "brush_title", "label": "Brushes title", "default": "למברשות בכל צורה" },
+    { "type": "richtext", "id": "brush_text", "label": "Brushes text", "default": "<p>למברשות יש המון צורות. Luné נבנה להתאים לכולן.</p>" },
+    { "type": "image_picker", "id": "sponge_image", "label": "Sponge image" },
+    { "type": "text", "id": "sponge_title", "label": "Sponge title", "default": "וגם לספוגים" },
+    { "type": "richtext", "id": "sponge_text", "label": "Sponge text", "default": "<p>תכננו <strong>תושבת עם זיפים רכים</strong> שמנקה מלמעלה ומלמטה — ומגיעה לכל נקבובית שהאצבעות לא מגיעות אליה.</p>" },
+    { "type": "text", "id": "large", "label": "Large adapters", "default": "2" },
+    { "type": "text", "id": "medium", "label": "Medium adapters", "default": "2" },
+    { "type": "text", "id": "small", "label": "Small adapters", "default": "2" },
+    { "type": "richtext", "id": "note", "label": "Text under adapters", "default": "<p>עמודי, מתרחב, מחודד. ממברשות אייליינר מדויקות של <strong>2mm</strong> ועד מברשות פודרה של <strong>25mm</strong> — כל הערכה שלך, מהפנים ועד הפרטים, בבת אחת. ה<strong>סיליקון הדו-שכבתי</strong> שלנו מתגמש לכל קימור. בלי כיפוף. בלי שבירה.</p>" }
+  ],
+  "presets": [{ "name": "Adapters" }]
+}
+{% endschema %}

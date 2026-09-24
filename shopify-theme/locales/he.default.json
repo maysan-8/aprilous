@@ -1,0 +1,66 @@
+{
+  "general": {
+    "skip_to_content": "דילוג לתוכן",
+    "main_menu": "ניווט ראשי",
+    "menu": "תפריט",
+    "close": "סגירה",
+    "pause": "השהיית הסרטון",
+    "play": "הפעלת הסרטון",
+    "rights": "כל הזכויות שמורות.",
+    "404_title": "הדף הזה לא נמצא",
+    "404_text": "אולי הוא הוזז, ואולי הוא פשוט הלך לישון מוקדם.",
+    "home": "חזרה לדף הבית"
+  },
+  "cart": {
+    "title": "הסל שלך",
+    "open": "פתיחת סל הקניות",
+    "added": "נוסף לסל 💜",
+    "empty_html": "הסל עדיין ריק 🌸<br>בואי נמצא לך משהו יפה",
+    "free_shipping_reached": "יש! קיבלת משלוח חינם ✨",
+    "to_free_shipping": "עוד [amount] למשלוח חינם",
+    "remove": "הסרה",
+    "subtotal": "סה״כ",
+    "taxes_note": "משלוח ומיסים מחושבים בתשלום.",
+    "checkout": "לתשלום מאובטח",
+    "update": "עדכון הסל",
+    "continue": "להמשך קנייה",
+    "error": "משהו השתבש, נסי שוב"
+  },
+  "products": {
+    "add_to_cart": "הוספה לסל",
+    "sold_out": "אזל מהמלאי",
+    "sale": "מבצע",
+    "from": "החל מ-",
+    "choose": "לבחירה",
+    "save": "חוסכת {{ amount }}",
+    "quantity": "כמות"
+  },
+  "newsletter": {
+    "placeholder": "המייל שלך",
+    "submit": "הרשמה",
+    "success": "נרשמת! תודה 💌"
+  },
+  "collections": {
+    "filter": "סינון מוצרים",
+    "all": "הכל",
+    "empty": "אין עדיין מוצרים באוסף הזה.",
+    "all_collections": "כל האוספים",
+    "products": "מוצרים"
+  },
+  "sections": {
+    "adapters": { "large": "גדולים", "medium": "בינוניים", "small": "קטנים" },
+    "featured": { "placeholder": "המוצר שלך יופיע כאן", "view_all": "לכל המוצרים" }
+  },
+  "search": {
+    "title": "חיפוש",
+    "placeholder": "מה מחפשים?",
+    "submit": "חיפוש",
+    "no_results": "לא נמצאו תוצאות עבור „{{ terms }}”"
+  },
+  "gift_card": {
+    "title": "כרטיס המתנה שלך",
+    "balance": "יתרה",
+    "expires": "בתוקף עד",
+    "shop": "לחנות"
+  }
+}

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" role="img" aria-label="Luné by Aprilous">
+  <defs>
+    <linearGradient id="body" x1="0" x2="1">
+      <stop offset="0" stop-color="#e9c6cc"/><stop offset=".35" stop-color="#fbe3e7"/><stop offset=".7" stop-color="#f4d2d8"/><stop offset="1" stop-color="#d9aab3"/>
+    </linearGradient>
+    <linearGradient id="cap" x1="0" x2="1">
+      <stop offset="0" stop-color="#e3bcc4"/><stop offset=".5" stop-color="#fdeef0"/><stop offset="1" stop-color="#d7a9b2"/>
+    </linearGradient>
+    <linearGradient id="win" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".7"/><stop offset=".45" stop-color="#ffb3c1"/><stop offset="1" stop-color="#ff5f7e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".7" r=".6">
+      <stop offset="0" stop-color="#ff7d97" stop-opacity=".55"/><stop offset="1" stop-color="#ff7d97" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="200" cy="452" rx="120" ry="14" fill="#3b1d2a" opacity=".1"/>
+  <!-- body -->
+  <path d="M96 96 v320 a104 26 0 0 0 208 0 v-320 z" fill="url(#body)"/>
+  <!-- seam -->
+  <path d="M96 318 a104 26 0 0 0 208 0" fill="none" stroke="#c9959f" stroke-opacity=".5" stroke-width="2"/>
+  <!-- window -->
+  <ellipse cx="170" cy="250" rx="90" ry="80" fill="url(#glow)"/>
+  <path d="M128 300 v-110 a42 42 0 0 1 84 0 v110 z" fill="url(#win)"/>
+  <path d="M140 296 v-100 a30 30 0 0 1 22 -29" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+  <path d="M252 290 v-80 a18 18 0 0 1 22 -18 v98 z" fill="url(#win)" opacity=".85"/>
+  <!-- cap -->
+  <ellipse cx="200" cy="96" rx="104" ry="26" fill="url(#cap)"/>
+  <ellipse cx="200" cy="92" rx="96" ry="22" fill="#f7dde2"/>
+  <g fill="#b88591">
+    <ellipse cx="150" cy="86" rx="10" ry="4"/><ellipse cx="250" cy="86" rx="10" ry="4"/>
+    <ellipse cx="128" cy="98" rx="8" ry="3.5"/><ellipse cx="272" cy="98" rx="8" ry="3.5"/>
+    <ellipse cx="170" cy="104" rx="9" ry="3.5"/><ellipse cx="230" cy="104" rx="9" ry="3.5"/>
+  </g>
+  <rect x="184" y="62" width="32" height="30" rx="8" fill="url(#cap)"/>
+  <ellipse cx="200" cy="62" rx="16" ry="5" fill="#fbe6ea"/>
+  <!-- button + wordmark -->
+  <circle cx="160" cy="372" r="11" fill="none" stroke="#b98692" stroke-width="2"/>
+  <path d="M160 366 v6" stroke="#b98692" stroke-width="2" stroke-linecap="round"/>
+  <text x="140" y="140" font-family="Georgia, serif" font-size="9" letter-spacing="2" fill="#b07d8b">APRILOUS</text>
+</svg>

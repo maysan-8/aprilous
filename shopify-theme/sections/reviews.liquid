@@ -1,0 +1,44 @@
+<section class="section" id="reviews">
+  <div class="container">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading %}
+    <div class="reviews">
+      {%- for block in section.blocks -%}
+        <article class="review reveal" {{ block.shopify_attributes }}>
+          <span class="stars" aria-label="{{ block.settings.stars }}/5">{% for i in (1..block.settings.stars) %}★{% endfor %}</span>
+          <p>{{ block.settings.quote }}</p>
+          <footer>
+            <span class="av" style="background:{{ block.settings.color }}">{{ block.settings.name | slice: 0 }}</span>
+            <div>{{ block.settings.name }}<small>{{ block.settings.role }}</small></div>
+          </footer>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Real girls, real glow" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "מה הן אומרות" }
+  ],
+  "blocks": [
+    { "type": "review", "name": "Review", "settings": [
+      { "type": "textarea", "id": "quote", "label": "Quote" },
+      { "type": "text", "id": "name", "label": "Name" },
+      { "type": "text", "id": "role", "label": "Details" },
+      { "type": "range", "id": "stars", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+      { "type": "color", "id": "color", "label": "Avatar colour", "default": "#e0879a" }
+    ] }
+  ],
+  "presets": [{
+    "name": "Reviews",
+    "blocks": [
+      { "type": "review", "settings": { "quote": "״פעם ניקיתי מברשות פעם בחודש (אם בכלל 🙈). עכשיו אני מכניסה אותן בערב ומתעוררת למברשות יבשות ורכות.״", "name": "נועה, 24", "role": "מאפרת פרילנסרית", "color": "#e0879a" } },
+      { "type": "review", "settings": { "quote": "״ה-Calm Mode דולק לי כל ערב כמו מנורת לילה. הוא כל כך יפה שהוא יושב על השידה כמו קישוט.״", "name": "שירה, 21", "role": "סטודנטית", "color": "#a57bff" } },
+      { "type": "review", "settings": { "quote": "״יש לי עור רגיש, וה-UV זה בונוס מטורף. גם הטבעות שלי נכנסות לשם פעם בשבוע.״", "name": "מאיה, 27", "role": "בלוגרית ביוטי", "color": "#c9a27a" } }
+    ]
+  }]
+}
+{% endschema %}

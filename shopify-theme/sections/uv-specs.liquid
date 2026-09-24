@@ -1,0 +1,52 @@
+<section class="section uv-section" id="uv">
+  <div class="container">
+    {% render 'section-head', tagline: section.settings.tagline, heading: section.settings.heading, text: section.settings.text %}
+    <div class="spec-cards">
+      {%- for block in section.blocks -%}
+        <div class="spec reveal" {{ block.shopify_attributes }}>
+          {%- case block.settings.icon -%}
+            {%- when 'rays' -%}<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="2.4"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 4v4M20 32v4M4 20h4M32 20h4M8.7 8.7l2.8 2.8M28.5 28.5l2.8 2.8M31.3 8.7l-2.8 2.8M11.5 28.5l-2.8 2.8"/></g></svg>
+            {%- when 'angle' -%}<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M20 20V5a15 15 0 0 1 13 22.5Z" fill="currentColor"/></svg>
+            {%- else -%}<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="21" r="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="66 22"/><path d="M20 12v9l6 4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+          {%- endcase -%}
+          <b data-count="{{ block.settings.value }}" data-suffix="{{ block.settings.suffix | escape }}">{{ block.settings.value }}{{ block.settings.suffix }}</b>
+          <span>{{ block.settings.label }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.note != blank -%}<div class="section-note reveal">{{ section.settings.note }}</div>{%- endif -%}
+    {%- if section.settings.jewelry != blank -%}
+      <div class="jewelry reveal"><span aria-hidden="true">💍</span>{{ section.settings.jewelry }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UV-C specs",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "לנקות את מה שרואים. לטהר את מה שלא. להשלים את השגרה." },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "ניקיון <em>שמעבר לניקיון</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p><strong>שקט נפשי בכוח UV.</strong> נראה נקי? תחשבי שוב.</p>" },
+    { "type": "richtext", "id": "note", "label": "Text under cards", "default": "<p>3 נורות ה-UV-C של Luné פרוסות בזווית זהב של 120° ומשמידות <strong>99% מהחיידקים</strong>. הן נדלקות אוטומטית בכל מחזור ייבוש — או לבד, בנגיעה אחת.</p>" },
+    { "type": "richtext", "id": "jewelry", "label": "Jewelry note", "default": "<p>לא רק מברשות. לא רק ספוגים. גם <strong>טבעות, עגילים ושרשראות</strong> — Luné שומר על הכל נקי באמת, מבפנים ומבחוץ.</p>" }
+  ],
+  "blocks": [
+    { "type": "spec", "name": "Spec card", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "rays", "label": "UV rays" }, { "value": "angle", "label": "Angle" }, { "value": "clock", "label": "Clock" }], "default": "rays" },
+      { "type": "text", "id": "value", "label": "Number", "default": "3" },
+      { "type": "text", "id": "suffix", "label": "Suffix", "info": "e.g. ° or %" },
+      { "type": "text", "id": "label", "label": "Label", "default": "נורות UV-C" }
+    ] }
+  ],
+  "presets": [{
+    "name": "UV-C specs",
+    "blocks": [
+      { "type": "spec", "settings": { "icon": "rays", "value": "3", "label": "נורות UV-C" } },
+      { "type": "spec", "settings": { "icon": "angle", "value": "120", "suffix": "°", "label": "זווית פיזור" } },
+      { "type": "spec", "settings": { "icon": "clock", "value": "10", "label": "דקות לשקט נפשי" } }
+    ]
+  }]
+}
+{% endschema %}

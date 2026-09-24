@@ -1,0 +1,71 @@
+<section class="section dry" id="dry">
+  <div class="container">
+    {% render 'section-head', tagline: section.settings.tagline, heading: section.settings.heading, text: section.settings.text %}
+
+    <div class="dry-story">
+      <div class="problem reveal"><span class="kicker">{{ section.settings.problem_label }}</span>{{ section.settings.problem }}</div>
+      <div class="solution reveal d1"><span class="kicker">{{ section.settings.solution_label }}</span>{{ section.settings.solution }}</div>
+    </div>
+
+    {%- if section.settings.temps_intro != blank -%}<div class="section-note reveal">{{ section.settings.temps_intro }}</div>{%- endif -%}
+    <div class="temps">
+      {%- for block in section.blocks -%}
+        <div class="temp{% if forloop.last %} hot{% endif %} reveal" {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.title }}</h3>
+          <span class="deg" dir="auto">{{ block.settings.temperature }}</span>
+          <span class="fibers">{{ block.settings.fibers }}</span>
+          <span class="for">{{ block.settings.for }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- assign timers = section.settings.timers | split: ',' -%}
+    {%- if timers.size > 0 -%}
+      <div class="timers reveal">
+        {%- for t in timers -%}
+          <span><b>{{ t | strip }}</b> {{ section.settings.timer_unit }}</span>{% unless forloop.last %}<i></i>{% endunless %}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    {%- if section.settings.timers_text != blank -%}<div class="section-note reveal">{{ section.settings.timers_text }}</div>{%- endif -%}
+    {%- if section.settings.quiet != blank -%}<div class="quiet reveal">{{ section.settings.quiet }}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Drying",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "רכות למגע. חמימות מבפנים. מוכנות להתחיל את היום." },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "ייבוש <em>בסטייל</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p><strong>מהיר יותר, בטוח יותר, רך יותר.</strong></p>" },
+    { "type": "text", "id": "problem_label", "label": "Problem label", "default": "הבעיה" },
+    { "type": "richtext", "id": "problem", "label": "Problem text", "default": "<p>לחכות שהמברשות יתייבשו זה הימור. הן יכולות <strong>להריח מוזר, להתייבש דביקות, לאבד צורה</strong> — או גרוע מזה, <strong>לספוג מים לתוך הבסיס</strong> ולהתחיל להתפרק.</p>" },
+    { "type": "text", "id": "solution_label", "label": "Solution label", "default": "Luné משנה את החוקים" },
+    { "type": "richtext", "id": "solution", "label": "Solution text", "default": "<p>עם <strong>חום PTC חכם</strong> ו<strong>טכנולוגיית Fiber-Safe</strong>, Luné מייבש את המברשות <strong>באופן אחיד, שקט ועדין</strong> — ומגן על שערות עדינות מהתייבשות, התפצלות והתפוררות.</p>" },
+    { "type": "richtext", "id": "temps_intro", "label": "Text above temperatures", "default": "<p>מקבלת <strong>4 מצבי טמפרטורה</strong> לכל סוג שיער ולכל לו״ז:</p>" },
+    { "type": "text", "id": "timers", "label": "Timers (comma separated)", "default": "150, 180, 210" },
+    { "type": "text", "id": "timer_unit", "label": "Timer unit", "default": "דקות" },
+    { "type": "richtext", "id": "timers_text", "label": "Text under timers", "default": "<p>עם <strong>טיימרים מתכווננים</strong> הייבוש נעשה בלי ידיים. מנקות לפני השינה — ומתעוררות למברשות שמרגישות כמו עננים: אווריריות, חמימות ומוכנות ליום.</p>" },
+    { "type": "richtext", "id": "quiet", "label": "Closing line", "default": "<p>הייבוש נשאר <strong>שקט כמו לחישה — 40dB בלבד</strong>. גימור חלק יותר, וכלים שמחזיקים יותר זמן.</p>" }
+  ],
+  "blocks": [
+    { "type": "temp", "name": "Temperature mode", "settings": [
+      { "type": "text", "id": "title", "label": "Name", "default": "Gentle" },
+      { "type": "text", "id": "temperature", "label": "Temperature", "default": "35–40°C" },
+      { "type": "text", "id": "fibers", "label": "Fibers", "default": "שיער פוני · שיער עיזים" },
+      { "type": "text", "id": "for", "label": "Best for", "default": "לשערות טבעיות" }
+    ] }
+  ],
+  "presets": [{
+    "name": "Drying",
+    "blocks": [
+      { "type": "temp", "settings": { "title": "Air Dry", "temperature": "טמפ׳ החדר", "fibers": "סנאי · קולינסקי", "for": "לשערות עדינות במיוחד" } },
+      { "type": "temp", "settings": { "title": "Gentle", "temperature": "35–40°C", "fibers": "שיער פוני · שיער עיזים", "for": "לשערות טבעיות" } },
+      { "type": "temp", "settings": { "title": "Standard", "temperature": "45–50°C", "fibers": "מברשות · ספוגים", "for": "לרוב השימושים" } },
+      { "type": "temp", "settings": { "title": "Fast", "temperature": "55–60°C", "fibers": "כשממהרות", "for": "לסבב מהיר" } }
+    ]
+  }]
+}
+{% endschema %}

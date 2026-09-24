@@ -1,0 +1,38 @@
+<section class="section" id="faq">
+  <div class="container">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading %}
+    <div class="faq reveal">
+      {%- for block in section.blocks -%}
+        <details{% if forloop.first %} open{% endif %} {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question }}</summary>
+          {{ block.settings.answer }}
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "יש לך שאלה?" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "שאלות נפוצות" }
+  ],
+  "blocks": [
+    { "type": "question", "name": "Question", "settings": [
+      { "type": "text", "id": "question", "label": "Question" },
+      { "type": "richtext", "id": "answer", "label": "Answer" }
+    ] }
+  ],
+  "presets": [{
+    "name": "FAQ",
+    "blocks": [
+      { "type": "question", "settings": { "question": "האם קרינת ה-UV בטוחה?", "answer": "<p>כן. נורות ה-UV-C פועלות בתוך המכשיר הסגור, אוטומטית בכל מחזור ייבוש או בנגיעה אחת, למשך 10 דקות.</p>" } },
+      { "type": "question", "settings": { "question": "אילו מברשות מתאימות למכשיר?", "answer": "<p>כמעט כל מברשת — 6 מתאמים (2 גדולים, 2 בינוניים, 2 קטנים) לקטרים של 2–25 מ״מ, וגם תושבת מיוחדת לספוגים.</p>" } },
+      { "type": "question", "settings": { "question": "כמה זמן לוקח הייבוש?", "answer": "<p>יש 4 מצבי טמפרטורה וטיימרים של 150, 180 או 210 דקות. הכי נוח: מנקות לפני השינה ומתעוררות למברשות יבשות.</p>" } },
+      { "type": "question", "settings": { "question": "מה זה Late Pledge?", "answer": "<p>קמפיין ה-Kickstarter שלנו הסתיים בהצלחה ו-Luné בדרך לייצור. ה-Late Pledge הוא ההזדמנות האחרונה להצטרף לפני המכירה בחנויות — עם המחיר הכי טוב שיש.</p>" } }
+    ]
+  }]
+}
+{% endschema %}

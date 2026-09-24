@@ -1,0 +1,12 @@
+<section class="page-hero" style="padding:120px 0">
+  <div class="container">
+    <span class="eyebrow">404</span>
+    <h1>{{ 'general.404_title' | t }}</h1>
+    <p>{{ 'general.404_text' | t }}</p><br>
+    <a class="btn btn-primary" href="{{ routes.root_url }}">{{ 'general.home' | t }}</a>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "404" }
+{% endschema %}

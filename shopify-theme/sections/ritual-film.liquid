@@ -1,0 +1,69 @@
+{%- liquid
+  assign titles = ''
+  for block in section.blocks limit: 4
+    assign titles = titles | append: block.settings.title | append: '|~|'
+  endfor
+  assign titles = titles | split: '|~|'
+-%}
+<section class="section how" id="how">
+  <div class="container">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="how-grid">
+      <div class="player film reveal">
+        <canvas id="brushFilm" data-titles="{{ titles | json | escape }}" aria-label="{{ section.settings.film_label | escape }}" role="img"></canvas>
+        <div class="player-top">
+          <span class="chip"><span class="rec"></span>{{ section.settings.chip }}</span>
+          <span class="chip film-time" dir="ltr">0:00</span>
+        </div>
+        <div class="player-caption">
+          <div class="step-no" dir="ltr">01 / 04</div>
+          <div class="step-title">{{ titles.first }}</div>
+        </div>
+        <div class="player-bar">
+          <button class="play-btn" aria-label="{{ 'general.pause' | t }}"></button>
+          <div class="segments" dir="ltr">
+            {%- for i in (1..4) -%}<button aria-label="{{ i }}"><i></i></button>{%- endfor -%}
+          </div>
+        </div>
+      </div>
+      <ol class="step-list">
+        {%- for block in section.blocks limit: 4 -%}
+          <li class="reveal{% if forloop.first %} active{% endif %}" {{ block.shopify_attributes }}>
+            <span class="num">0{{ forloop.index }}</span>
+            <div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></div>
+          </li>
+        {%- endfor -%}
+      </ol>
+    </div>
+  </div>
+</section>
+<script src="{{ 'brush-film.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Ritual animation",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "שלושה שלבים · לחיצה אחת" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "טקס יופי קטן,<br><em>big glow</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>מכניסים את המברשת, לוחצים פעם אחת — ו-Luné עושה את כל השאר.</p>" },
+    { "type": "text", "id": "chip", "label": "Animation tag", "default": "The ritual" },
+    { "type": "text", "id": "film_label", "label": "Animation description (accessibility)", "default": "אנימציה: מברשות איפור מסתובבות במכשיר — ניקוי, ייבוש וחיטוי UV" }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Step", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "ניקוי בסחרור" },
+      { "type": "textarea", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "presets": [{
+    "name": "Ritual animation",
+    "blocks": [
+      { "type": "step", "settings": { "title": "ניקוי בסחרור", "text": "המברשת מסתובבת על משטח סיליקון כפול שכמו מעסה כל שערה ומשחרר שאריות מייקאפ, שמן ואבק." } },
+      { "type": "step", "settings": { "title": "ייבוש עדין ושקט", "text": "חום PTC חכם מייבש באופן אחיד ועדין, בלי שהמים יחלחלו לבסיס המברשת." } },
+      { "type": "step", "settings": { "title": "חיטוי UV-C · 99%", "text": "3 נורות UV-C משמידות 99% מהחיידקים — אוטומטית בכל מחזור ייבוש." } },
+      { "type": "step", "settings": { "title": "נקייה, רכה, מוכנה ✨", "text": "בבוקר מחכות לך מברשות אווריריות, חמימות ומוכנות ליום." } }
+    ]
+  }]
+}
+{% endschema %}

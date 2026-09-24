@@ -1,0 +1,27 @@
+<section class="page-hero">
+  <div class="container">
+    <h1>{{ 'search.title' | t }}</h1>
+    <form action="{{ routes.search_url }}" class="newsletter search-form" role="search">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'search.placeholder' | t }}" aria-label="{{ 'search.placeholder' | t }}">
+      <input type="hidden" name="type" value="product">
+      <button class="btn btn-primary" type="submit">{{ 'search.submit' | t }}</button>
+    </form>
+  </div>
+</section>
+<section class="section" style="padding-top:20px">
+  <div class="container">
+    {%- if search.performed -%}
+      <div class="product-grid">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}{% render 'product-card', product: item, bg: 1 %}{%- endif -%}
+        {%- else -%}
+          <p class="empty-note">{{ 'search.no_results' | t: terms: search.terms }}</p>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Search" }
+{% endschema %}

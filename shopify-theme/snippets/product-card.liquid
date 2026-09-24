@@ -1,0 +1,33 @@
+{%- comment -%}
+  Renders a product card. Accepts: product, bg (1-5), badge (optional)
+{%- endcomment -%}
+{%- assign variant = product.selected_or_first_available_variant -%}
+<article class="product reveal" data-cat="{{ product.type | handleize }}">
+  <a class="product-media bg{{ bg | default: 1 }}" href="{{ product.url }}">
+    {%- if badge != blank -%}<span class="badge uv">{{ badge }}</span>{%- elsif product.compare_at_price > product.price -%}<span class="badge uv">{{ 'products.sale' | t }}</span>{%- endif -%}
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400, 600, 800', sizes: '(min-width: 1000px) 33vw, (min-width: 760px) 50vw, 100vw', alt: product.featured_media.alt | default: product.title }}
+    {%- else -%}
+      <img src="{{ 'device.svg' | asset_url }}" alt="{{ product.title | escape }}" loading="lazy" width="400" height="480">
+    {%- endif -%}
+  </a>
+  <div class="product-body">
+    {%- if product.type != blank -%}<span class="cat">{{ product.type }}</span>{%- endif -%}
+    <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    {%- if product.description != blank -%}<p>{{ product.description | strip_html | truncatewords: 16 }}</p>{%- endif -%}
+    <div class="product-foot">
+      <span class="p">
+        {%- if product.price_varies -%}{{ 'products.from' | t }} {% endif -%}
+        {{ product.price | money }}
+        {%- if product.compare_at_price > product.price -%}<s>{{ product.compare_at_price | money }}</s>{%- endif -%}
+      </span>
+      {%- if product.has_only_default_variant and variant.available -%}
+        <button class="add-btn" data-add data-variant-id="{{ variant.id }}" data-name="{{ product.title | escape }}">{{ 'products.add_to_cart' | t }}</button>
+      {%- elsif product.available -%}
+        <a class="add-btn" href="{{ product.url }}">{{ 'products.choose' | t }}</a>
+      {%- else -%}
+        <span class="add-btn is-disabled">{{ 'products.sold_out' | t }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,38 @@
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="{{ routes.root_url }}" class="logo" aria-label="{{ shop.name }}">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 400 | image_tag: height: section.settings.logo_height, alt: shop.name, class: 'logo-img' }}
+      {%- else -%}
+        <span class="logo-dot"></span>{{ section.settings.logo_text | default: shop.name | downcase }}
+      {%- endif -%}
+    </a>
+    <nav class="nav-links" aria-label="{{ 'general.main_menu' | t }}">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+    <div class="nav-actions">
+      <a class="icon-btn" href="{{ routes.cart_url }}" data-open-cart aria-label="{{ 'cart.open' | t }}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-count{% if cart.item_count > 0 %} show{% endif %}">{{ cart.item_count }}</span>
+      </a>
+      <button class="icon-btn menu-toggle" aria-label="{{ 'general.menu' | t }}" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to use the text logo" },
+    { "type": "range", "id": "logo_height", "label": "Logo height", "min": 20, "max": 80, "step": 2, "unit": "px", "default": 36 },
+    { "type": "text", "id": "logo_text", "label": "Text logo", "default": "aprilous" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

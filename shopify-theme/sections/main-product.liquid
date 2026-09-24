@@ -1,0 +1,146 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign active_media_id = product.media.first.id
+  if current_variant.featured_media
+    assign active_media_id = current_variant.featured_media.id
+  endif
+-%}
+<section class="section product-page" style="padding-top:48px">
+  <div class="container">
+    <article class="featured pdp" data-product-form>
+      <div class="pdp-media">
+        {%- if product.media.size > 0 -%}
+          <div class="pdp-main">
+            {%- for media in product.media -%}
+              <figure class="pdp-slide{% if media.id == active_media_id %} is-active{% endif %}" data-media-id="{{ media.id }}">
+                {%- case media.media_type -%}
+                  {%- when 'video' -%}{{ media | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false }}
+                  {%- when 'external_video' -%}{{ media | external_video_tag }}
+                  {%- else -%}{{ media | image_url: width: 1400 | image_tag: widths: '500, 800, 1100, 1400', sizes: '(min-width: 1000px) 55vw, 100vw', loading: 'eager' }}
+                {%- endcase -%}
+              </figure>
+            {%- endfor -%}
+            {%- if product.compare_at_price > product.price -%}<span class="badge">{{ 'products.sale' | t }}</span>{%- endif -%}
+          </div>
+          {%- if product.media.size > 1 -%}
+            <div class="pdp-thumbs" role="list">
+              {%- for media in product.media -%}
+                <button class="pdp-thumb{% if media.id == active_media_id %} is-active{% endif %}" data-thumb="{{ media.id }}" aria-label="{{ media.alt | default: product.title | escape }}">
+                  {{ media.preview_image | image_url: width: 160 | image_tag: loading: 'lazy' }}
+                </button>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- else -%}
+          <div class="pdp-main"><figure class="pdp-slide is-active"><img src="{{ 'lune-lineup.webp' | asset_url }}" alt="{{ product.title | escape }}" width="1124" height="432"></figure></div>
+        {%- endif -%}
+      </div>
+
+      <div class="featured-body">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'eyebrow' -%}
+              <span class="eyebrow" {{ block.shopify_attributes }}>{{ block.settings.text | default: product.type }}</span>
+            {%- when 'title' -%}
+              <h1 class="pdp-title" {{ block.shopify_attributes }}>{{ product.title }}</h1>
+            {%- when 'price' -%}
+              <div class="price" data-price {{ block.shopify_attributes }}>
+                <span class="now">{{ current_variant.price | money }}</span>
+                {%- if current_variant.compare_at_price > current_variant.price -%}
+                  <span class="was">{{ current_variant.compare_at_price | money }}</span>
+                  {%- assign saving = current_variant.compare_at_price | minus: current_variant.price | money -%}
+                  <span class="save">{{ 'products.save' | t: amount: saving }}</span>
+                {%- endif -%}
+              </div>
+            {%- when 'description' -%}
+              <div class="pdp-desc rte" {{ block.shopify_attributes }}>{{ product.description }}</div>
+            {%- when 'features' -%}
+              {%- assign lines = block.settings.features | newline_to_br | split: '<br />' -%}
+              <ul class="check-list" {{ block.shopify_attributes }}>
+                {%- for line in lines -%}{%- assign l = line | strip -%}{%- if l != blank -%}<li>{{ l }}</li>{%- endif -%}{%- endfor -%}
+              </ul>
+            {%- when 'variant_picker' -%}
+              {%- unless product.has_only_default_variant -%}
+                <div class="variant-picker" {{ block.shopify_attributes }}>
+                  {%- for option in product.options_with_values -%}
+                    {%- assign opt = option.name | downcase -%}
+                    {%- assign is_color = false -%}
+                    {%- if opt contains 'color' or opt contains 'colour' or opt contains 'צבע' -%}{%- assign is_color = true -%}{%- endif -%}
+                    <fieldset class="swatches{% unless is_color %} chips{% endunless %}" data-option-index="{{ forloop.index0 }}">
+                      <legend>{{ option.name }}: <strong data-option-label>{{ option.selected_value }}</strong></legend>
+                      {%- for value in option.values -%}
+                        {%- if is_color -%}
+                          {%- capture swatch_color -%}{% render 'swatch-color', value: value %}{%- endcapture -%}
+                          <button type="button" class="swatch{% if value == option.selected_value %} active{% endif %}" data-value="{{ value | escape }}" aria-label="{{ value | escape }}" aria-pressed="{% if value == option.selected_value %}true{% else %}false{% endif %}" style="background: {{ swatch_color }}{% if value.swatch.image %} url({{ value.swatch.image | image_url: width: 60 }}) center/cover{% endif %}"></button>
+                        {%- else -%}
+                          <button type="button" class="chip-opt{% if value == option.selected_value %} active{% endif %}" data-value="{{ value | escape }}" aria-pressed="{% if value == option.selected_value %}true{% else %}false{% endif %}">{{ value }}</button>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </fieldset>
+                  {%- endfor -%}
+                </div>
+              {%- endunless -%}
+            {%- when 'buy_buttons' -%}
+              <div {{ block.shopify_attributes }}>
+              {%- form 'product', product, class: 'buy-row', data-ajax-add: '' -%}
+                <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-input>
+                <div class="qty" aria-label="{{ 'products.quantity' | t }}">
+                  <button type="button" data-step="1" aria-label="+">+</button>
+                  <output data-qty>1</output>
+                  <button type="button" data-step="-1" aria-label="−">−</button>
+                  <input type="hidden" name="quantity" value="1" data-qty-input>
+                </div>
+                <button class="btn btn-primary" type="submit" data-add-button{% unless current_variant.available %} disabled{% endunless %}>
+                  <span data-add-label>{% if current_variant.available %}{{ 'products.add_to_cart' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</span> <span class="arrow">←</span>
+                </button>
+                {%- if block.settings.show_dynamic_checkout -%}<div class="dynamic-checkout">{{ form | payment_button }}</div>{%- endif -%}
+              {%- endform -%}
+              </div>
+            {%- when 'trust' -%}
+              <div class="trust" {{ block.shopify_attributes }}>
+                {%- if block.settings.item_1 != blank -%}<span>{{ block.settings.item_1 }}</span>{%- endif -%}
+                {%- if block.settings.item_2 != blank -%}<span>{{ block.settings.item_2 }}</span>{%- endif -%}
+                {%- if block.settings.item_3 != blank -%}<span>{{ block.settings.item_3 }}</span>{%- endif -%}
+              </div>
+            {%- when 'collapsible' -%}
+              <details class="pdp-more" {{ block.shopify_attributes }}>
+                <summary>{{ block.settings.heading }}</summary>
+                <div class="rte">{{ block.settings.content }}{{ block.settings.page.content }}</div>
+              </details>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </article>
+  </div>
+  <script type="application/json" data-product-json>
+    {
+      "variants": {{ product.variants | json }},
+      "options": {{ product.options | json }}
+    }
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "blocks": [
+    { "type": "eyebrow", "name": "Eyebrow", "limit": 1, "settings": [{ "type": "text", "id": "text", "label": "Text", "info": "Leave empty to show the product type" }] },
+    { "type": "title", "name": "Title", "limit": 1 },
+    { "type": "price", "name": "Price", "limit": 1 },
+    { "type": "description", "name": "Description", "limit": 1 },
+    { "type": "features", "name": "Feature list", "settings": [{ "type": "textarea", "id": "features", "label": "Features (one per line)", "default": "3 נורות UV-C · 99% פחות חיידקים\n4 מצבי ייבוש בחום עדין + טיימר\n5 מצבי תאורת אווירה\nשקט כמו לחישה — 40dB" }] },
+    { "type": "variant_picker", "name": "Variant picker", "limit": 1 },
+    { "type": "buy_buttons", "name": "Buy buttons", "limit": 1, "settings": [{ "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout buttons", "default": false }] },
+    { "type": "trust", "name": "Trust badges", "settings": [
+      { "type": "text", "id": "item_1", "label": "Item 1", "default": "🚚 משלוח עד הבית" },
+      { "type": "text", "id": "item_2", "label": "Item 2", "default": "🔒 תשלום מאובטח" },
+      { "type": "text", "id": "item_3", "label": "Item 3", "default": "↩ 30 יום להחזרה" }
+    ] },
+    { "type": "collapsible", "name": "Collapsible tab", "settings": [
+      { "type": "text", "id": "heading", "label": "Heading", "default": "משלוחים והחזרות" },
+      { "type": "richtext", "id": "content", "label": "Content" },
+      { "type": "page", "id": "page", "label": "Content from page" }
+    ] }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,19 @@
+<div class="drawer-backdrop" data-close-cart></div>
+<aside class="drawer" aria-label="{{ 'cart.title' | t }}" aria-hidden="true">
+  <div class="drawer-head">
+    <h3>{{ 'cart.title' | t }}</h3>
+    <button class="icon-btn" data-close-cart aria-label="{{ 'general.close' | t }}">✕</button>
+  </div>
+  {%- if settings.free_shipping_threshold > 0 -%}
+    <div class="ship-note" id="shipNote"></div>
+    <div class="ship-bar"><i id="shipBar"></i></div>
+  {%- endif -%}
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="row total"><span>{{ 'cart.subtotal' | t }}</span><span id="cartTotal">{{ cart.total_price | money }}</span></div>
+    <p class="ship-note">{{ 'cart.taxes_note' | t }}</p>
+    <form action="{{ routes.cart_url }}" method="post">
+      <button class="btn btn-primary" type="submit" name="checkout" id="checkout"{% if cart.item_count == 0 %} disabled{% endif %}>{{ 'cart.checkout' | t }} <span class="arrow">←</span></button>
+    </form>
+  </div>
+</aside>

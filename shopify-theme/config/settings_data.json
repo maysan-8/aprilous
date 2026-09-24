@@ -1,0 +1,12 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "color_background": "#fffaf6",
+      "color_ink": "#2e1621",
+      "color_accent": "#a24d63",
+      "color_uv": "#a57bff",
+      "free_shipping_threshold": 299
+    }
+  }
+}

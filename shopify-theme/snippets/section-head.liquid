@@ -1,0 +1,7 @@
+{%- comment -%} Accepts: tagline, eyebrow, heading, text {%- endcomment -%}
+<div class="section-head reveal">
+  {%- if tagline != blank -%}<span class="tagline">{{ tagline }}</span>{%- endif -%}
+  {%- if eyebrow != blank -%}<span class="eyebrow">{{ eyebrow }}</span>{%- endif -%}
+  {%- if heading != blank -%}<h2 class="rich-heading">{{ heading }}</h2>{%- endif -%}
+  {%- if text != blank -%}<div class="section-sub">{{ text }}</div>{%- endif -%}
+</div>

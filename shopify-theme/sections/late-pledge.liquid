@@ -1,0 +1,34 @@
+<section class="section pledge" id="pledge">
+  <div class="container">
+    <div class="pledge-card reveal">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1800', sizes: '(min-width: 1000px) 900px, 100vw' }}
+      {%- else -%}
+        <img src="{{ 'lune-lineup.webp' | asset_url }}" alt="" width="1124" height="432" loading="lazy">
+      {%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="rich-heading">{{ section.settings.heading }}</h2>
+      {{ section.settings.text }}
+      {%- if section.settings.offer != blank -%}<div class="off">{{ section.settings.offer }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="btn btn-primary btn-xl">{{ section.settings.button_label }} <span class="arrow">←</span></a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Offer banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in five-colour photo" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The glow continues" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "ה-Late Pledge<br><em>פתוח עכשיו</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p><strong>קמפיין ה-Kickstarter שלנו הסתיים בהצלחה</strong>, ו-Luné בדרך לייצור. <strong>ה-Late Pledge הוא ההזדמנות האחרונה שלך להצטרף לפני המכירה בחנויות</strong> — ולהבטיח את המחיר הכי טוב שיש.</p>" },
+    { "type": "text", "id": "offer", "label": "Offer", "default": "עד 50% הנחה" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "להצטרפות ל-Late Pledge" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Offer banner" }]
+}
+{% endschema %}

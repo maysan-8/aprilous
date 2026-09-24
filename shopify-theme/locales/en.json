@@ -1,0 +1,10 @@
+{
+  "general": { "skip_to_content": "Skip to content", "main_menu": "Main menu", "menu": "Menu", "close": "Close", "pause": "Pause video", "play": "Play video", "rights": "All rights reserved.", "404_title": "Page not found", "404_text": "It may have moved, or gone to bed early.", "home": "Back to home" },
+  "cart": { "title": "Your cart", "open": "Open cart", "added": "Added to cart 💜", "empty_html": "Your cart is empty 🌸<br>Let's find you something pretty", "free_shipping_reached": "You've unlocked free shipping ✨", "to_free_shipping": "[amount] away from free shipping", "remove": "Remove", "subtotal": "Subtotal", "taxes_note": "Shipping and taxes calculated at checkout.", "checkout": "Secure checkout", "update": "Update cart", "continue": "Continue shopping", "error": "Something went wrong, please try again" },
+  "products": { "add_to_cart": "Add to cart", "sold_out": "Sold out", "sale": "Sale", "from": "From", "choose": "Choose", "save": "Save {{ amount }}", "quantity": "Quantity" },
+  "newsletter": { "placeholder": "Your email", "submit": "Subscribe", "success": "You're in! Thank you 💌" },
+  "collections": { "filter": "Filter products", "all": "All", "empty": "No products in this collection yet.", "all_collections": "All collections", "products": "products" },
+  "sections": { "adapters": { "large": "Large", "medium": "Medium", "small": "Small" }, "featured": { "placeholder": "Your product will appear here", "view_all": "View all" } },
+  "search": { "title": "Search", "placeholder": "What are you looking for?", "submit": "Search", "no_results": "No results for “{{ terms }}”" },
+  "gift_card": { "title": "Your gift card", "balance": "Balance", "expires": "Expires", "shop": "Shop now" }
+}

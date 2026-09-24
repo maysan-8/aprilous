@@ -1,0 +1,23 @@
+{%- layout none -%}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ 'gift_card.title' | t }} · {{ shop.name }}</title>
+  {{ 'aprilous.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body>
+  <section class="page-hero" style="padding:80px 0">
+    <div class="container">
+      <span class="eyebrow">{{ shop.name }}</span>
+      <h1>{{ gift_card.initial_value | money }}</h1>
+      {%- if gift_card.balance != gift_card.initial_value -%}<p>{{ 'gift_card.balance' | t }}: {{ gift_card.balance | money }}</p>{%- endif -%}
+      <p class="gift-code"><strong>{{ gift_card.code | format_code }}</strong></p>
+      {%- if gift_card.expires_on -%}<p>{{ 'gift_card.expires' | t }}: {{ gift_card.expires_on | date: '%d/%m/%Y' }}</p>{%- endif -%}
+      <br><a class="btn btn-primary" href="{{ shop.url }}">{{ 'gift_card.shop' | t }}</a>
+    </div>
+  </section>
+</body>
+</html>

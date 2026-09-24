@@ -1,0 +1,64 @@
+<section class="section design" id="design">
+  <div class="container">
+    {% render 'section-head', tagline: section.settings.tagline, heading: section.settings.heading, text: section.settings.text %}
+
+    <figure class="lineup reveal">
+      <span class="lineup-glow" aria-hidden="true"></span>
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 2000 | image_tag: loading: 'lazy', widths: '600, 1000, 1500, 2000', sizes: '(min-width: 1040px) 1000px, 100vw' }}
+      {%- else -%}
+        <img src="{{ 'lune-lineup.webp' | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="1124" height="432" loading="lazy">
+      {%- endif -%}
+    </figure>
+
+    {%- if section.settings.note != blank -%}<div class="section-note reveal">{{ section.settings.note }}</div>{%- endif -%}
+
+    <div class="modes reveal" role="group" aria-label="{{ section.settings.heading | strip_html | escape }}">
+      {%- for block in section.blocks -%}
+        <button class="mode{% if forloop.first %} active{% endif %}" data-color="{{ block.settings.color }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}" {{ block.shopify_attributes }}>
+          {% render 'mode-icon', icon: block.settings.icon %}
+          <strong>{{ block.settings.title }}</strong><small>{{ block.settings.subtitle }}</small>
+        </button>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Design & light modes",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "פיסולי בצורה. מוקפד בנוכחות. יפה בדיוק כמו שהוא חיוני." },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "יפה מכדי<br><em>להחביא במגירה</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p><strong>כל סנטימטר על השידה שלך חשוב.</strong> לא רצינו ש-Luné יהיה עוד גאדג׳ט שנעלם במגירה — עיצבנו אותו כ<strong>פריט תצוגה</strong>, משהו שתשאירי בחוץ בגאווה.</p>" },
+    { "type": "image_picker", "id": "image", "label": "Product image", "info": "Leave empty to use the built-in five-colour photo" },
+    { "type": "text", "id": "image_alt", "label": "Image description", "default": "מכשירי Luné בחמישה צבעים: תכלת, ורוד, שחור, כסוף וצהוב" },
+    { "type": "richtext", "id": "note", "label": "Text under image", "default": "<p>זה יותר ממכשיר ניקוי — זו <strong>תאורת אווירה לחדר שלך</strong>. הרפידה השקופה מזכירה <strong>גן זן</strong>, וחמישה מצבי תאורה משתנים לפי מצב הרוח. נגיעה בבסיס מחליפה ביניהם.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "mode",
+      "name": "Light mode",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [
+          { "value": "sunrise", "label": "Sunrise" }, { "value": "melon", "label": "Melon" }, { "value": "candy", "label": "Candy" },
+          { "value": "sunset", "label": "Sunset" }, { "value": "moon", "label": "Moon" }
+        ], "default": "sunrise" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Morning Mode" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Sunrise Glow · זריחה" },
+        { "type": "color", "id": "color", "label": "Glow colour", "default": "#ffb36b" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Design & light modes",
+    "blocks": [
+      { "type": "mode", "settings": { "icon": "sunrise", "title": "Morning Mode", "subtitle": "Sunrise Glow · זריחה", "color": "#ffb36b" } },
+      { "type": "mode", "settings": { "icon": "melon", "title": "Daydream Mode", "subtitle": "Melon Mist · אבטיח", "color": "#ff7d97" } },
+      { "type": "mode", "settings": { "icon": "candy", "title": "Play Mode", "subtitle": "Candy Party · סוכריות", "color": "#c77dff" } },
+      { "type": "mode", "settings": { "icon": "sunset", "title": "Sunset Mode", "subtitle": "Evening Bloom · שקיעה", "color": "#ff8a5c" } },
+      { "type": "mode", "settings": { "icon": "moon", "title": "Calm Mode", "subtitle": "Midnight Serenity · לילה", "color": "#7a8cff" } }
+    ]
+  }]
+}
+{% endschema %}

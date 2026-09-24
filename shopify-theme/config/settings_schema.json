@@ -1,0 +1,39 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Aprilous",
+    "theme_version": "1.0.0",
+    "theme_author": "Aprilous",
+    "theme_documentation_url": "https://github.com/maysan-8/aprilous",
+    "theme_support_url": "https://github.com/maysan-8/aprilous"
+  },
+  {
+    "name": "Colours",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "Background", "default": "#fffaf6" },
+      { "type": "color", "id": "color_ink", "label": "Text and buttons", "default": "#2e1621" },
+      { "type": "color", "id": "color_accent", "label": "Accent", "default": "#a24d63" },
+      { "type": "color", "id": "color_uv", "label": "UV glow", "default": "#a57bff" }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      { "type": "number", "id": "free_shipping_threshold", "label": "Free shipping from (store currency)", "info": "Set to 0 to hide the free-shipping bar", "default": 299 }
+    ]
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" }
+    ]
+  }
+]

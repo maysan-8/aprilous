@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" role="img" aria-label="Aprilous brush cleanser">
+  <defs>
+    <linearGradient id="b" x1="0" x2="1"><stop offset="0" stop-color="#e3d4ff"/><stop offset=".5" stop-color="#f8f3ff"/><stop offset="1" stop-color="#cdb6fb"/></linearGradient>
+    <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#c9a27a"/><stop offset=".5" stop-color="#f4dcc0"/><stop offset="1" stop-color="#b8906a"/></linearGradient>
+  </defs>
+  <ellipse cx="200" cy="452" rx="120" ry="14" fill="#3b1d2a" opacity=".08"/>
+  <rect x="176" y="60" width="48" height="30" rx="6" fill="url(#g)"/>
+  <rect x="186" y="40" width="28" height="24" rx="4" fill="#f7cfd6"/>
+  <path d="M130 130 q0 -40 40 -40 h60 q40 0 40 40 v270 a40 40 0 0 1 -40 40 h-60 a40 40 0 0 1 -40 -40 z" fill="url(#b)"/>
+  <rect x="150" y="220" width="100" height="130" rx="10" fill="#fff" opacity=".85"/>
+  <text x="200" y="262" text-anchor="middle" font-family="Georgia, serif" font-size="12" letter-spacing="3" fill="#a26f7d">APRILOUS</text>
+  <text x="200" y="292" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#5a3947">Foam</text>
+  <text x="200" y="318" text-anchor="middle" font-family="Arial" font-size="10" fill="#a26f7d">200 ml</text>
+  <path d="M160 140 q-6 60 0 120" stroke="#fff" stroke-width="8" stroke-linecap="round" fill="none" opacity=".7"/>
+</svg>
